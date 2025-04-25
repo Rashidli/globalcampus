@@ -13,70 +13,90 @@
     <div class="students-head !mt-[23px]">
         <form action="{{ route('students.index') }}" method="get" style="width: 100%">
 
-            <div
-                class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 bg-white p-4 rounded-lg shadow-md dark:bg-gray-800">
-                <input type="text" name="name" placeholder="Ad" value="{{request('name')}}"
-                       class="border border-gray-300 rounded-lg p-2 w-full dark:border-gray-600 dark:bg-gray-700 dark:text-white">
+            <div class="grid grid-cols-1 items-start md:grid-cols-2 lg:grid-cols-5 gap-4 bg-white p-4 rounded-lg shadow-md dark:bg-gray-800">
 
-                <input type="text" name="surname" placeholder="Soyad" value="{{request('surname')}}"
-                       class="border border-gray-300 rounded-lg p-2 w-full dark:border-gray-600 dark:bg-gray-700 dark:text-white">
+                <div class="flex flex-col">
+                    <label for="name" class="text-sm font-medium text-gray-700 dark:text-white">Ad</label>
+                    <input type="text" name="name" id="name" placeholder="Ad" value="{{request('name')}}"
+                           class="border border-gray-300 rounded-lg p-2 w-full dark:border-gray-600 dark:bg-gray-700 dark:text-white">
+                </div>
 
-                <select name="agent_id"
-                        class="select2 border border-gray-300 rounded-lg p-2 w-full dark:border-gray-600 dark:bg-gray-700 dark:text-white"
-                        @if(auth()->user()->type === \App\Enums\UserType::AGENT->value) disabled @endif>
-                    <option value="">Agent seçin</option>
-                    @foreach($agents as $agent)
-                        <option value="{{$agent->id}}" {{$agent->id == request('agent_id') ? 'selected' : ''}}>
-                            {{$agent->agent_info?->company_name}}
-                        </option>
-                    @endforeach
-                </select>
-                <select name="period_id"
-                        class="select2 border border-gray-300 rounded-lg p-2 w-full dark:border-gray-600 dark:bg-gray-700 dark:text-white">
-                    <option value="">Dönəm seçin</option>
-                    @foreach($periods as $period)
-                        <option value="{{$period->id}}" {{$period->id == request('period_id') ? 'selected' : ''}}>
-                            {{$period->title}}
-                        </option>
-                    @endforeach
-                </select>
-                <select name="university_list_id"
-                        class="select2 border border-gray-300 rounded-lg p-2 w-full dark:border-gray-600 dark:bg-gray-700 dark:text-white">
-                    <option value="">Universitet seçin</option>
-                    @foreach($university_lists as $university_list)
-                        <option
-                            value="{{$university_list->id}}" {{$university_list->id == request('university_list_id') ? 'selected' : ''}}>
-                            {{$university_list->title}}
-                        </option>
-                    @endforeach
-                </select>
+                <div class="flex flex-col">
+                    <label for="surname" class="text-sm font-medium text-gray-700 dark:text-white">Soyad</label>
+                    <input type="text" name="surname" id="surname" placeholder="Soyad" value="{{request('surname')}}"
+                           class="border border-gray-300 rounded-lg p-2 w-full dark:border-gray-600 dark:bg-gray-700 dark:text-white">
+                </div>
 
-                <select name="education_level_id"
-                        class="select2 border border-gray-300 rounded-lg p-2 w-full dark:border-gray-600 dark:bg-gray-700 dark:text-white">
-                    <option value="">Təhsil pilləsi seçin</option>
-                    @foreach($education_levels as $education_level)
-                        <option
-                            value="{{$education_level->id}}" {{$education_level->id == request('education_level_id') ? 'selected' : ''}}>
-                            {{$education_level->title}}
-                        </option>
-                    @endforeach
-                </select>
+                <div class="flex flex-col">
+                    <label for="agent_id" class="text-sm font-medium text-gray-700 dark:text-white">Agent</label>
+                    <select name="agent_id[]" id="agent_id" multiple
+                            class="select2 border border-gray-300 rounded-lg p-2 w-full dark:border-gray-600 dark:bg-gray-700 dark:text-white"
+                            @if(auth()->user()->type === \App\Enums\UserType::AGENT->value) disabled @endif>
+                        <option value="">Agent seçin</option>
+                        @foreach($agents as $agent)
+                            <option value="{{$agent->id}}" {{ collect(request('agent_id'))->contains($agent->id) ? 'selected' : '' }}>
+                                {{$agent->agent_info?->company_name}}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
 
+                <div class="flex flex-col">
+                    <label for="period_id" class="text-sm font-medium text-gray-700 dark:text-white">Dönəm</label>
+                    <select name="period_id[]" id="period_id" multiple
+                            class="select2 border border-gray-300 rounded-lg p-2 w-full dark:border-gray-600 dark:bg-gray-700 dark:text-white">
+                        <option value="">Dönəm seçin</option>
+                        @foreach($periods as $period)
+                            <option value="{{$period->id}}" {{ collect(request('period_id'))->contains($period->id) ? 'selected' : '' }}>
+                                {{$period->title}}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
 
-                <select name="profession_id" id="profession"
-                        class="select2 border border-gray-300 rounded-lg p-2 w-full dark:border-gray-600 dark:bg-gray-700 dark:text-white">
-                    <option value="">İxtisas seçin</option>
-                </select>
+                <div class="flex flex-col">
+                    <label for="university_list_id" class="text-sm font-medium text-gray-700 dark:text-white">Universitet</label>
+                    <select name="university_list_id[]" id="university_list_id" multiple
+                            class="select2 border border-gray-300 rounded-lg p-2 w-full dark:border-gray-600 dark:bg-gray-700 dark:text-white">
+                        <option value="">Universitet seçin</option>
+                        @foreach($university_lists as $university_list)
+                            <option value="{{$university_list->id}}" {{ collect(request('university_list_id'))->contains($university_list->id) ? 'selected' : '' }}>
+                                {{$university_list->title}}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <div class="flex flex-col">
+                    <label for="education_level_id" class="text-sm font-medium text-gray-700 dark:text-white">Təhsil pilləsi</label>
+                    <select name="education_level_id" id="education_level_id"
+                            class="select2 border border-gray-300 rounded-lg p-2 w-full dark:border-gray-600 dark:bg-gray-700 dark:text-white">
+                        <option value="">Təhsil pilləsi seçin</option>
+                        @foreach($education_levels as $education_level)
+                            <option value="{{$education_level->id}}" {{$education_level->id == request('education_level_id') ? 'selected' : ''}}>
+                                {{$education_level->title}}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <div class="flex flex-col">
+                    <label for="profession_id" class="text-sm font-medium text-gray-700 dark:text-white">İxtisas</label>
+                    <select name="profession_id[]" id="profession_id" multiple
+                            class="select2 border border-gray-300 rounded-lg p-2 w-full dark:border-gray-600 dark:bg-gray-700 dark:text-white">
+                        <option value="">İxtisas seçin</option>
+                    </select>
+                </div>
 
                 <div class="col-span-1 md:col-span-3 flex gap-4">
                     <a href="{{route('students.index')}}"
                        class="flex-1 text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300
-               font-medium rounded-full text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 transition">
+                   font-medium rounded-full text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 transition">
                         Sıfırla
                     </a>
                     <button type="submit"
                             class="flex-1 text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300
-                    font-medium rounded-full text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 transition">
+                        font-medium rounded-full text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 transition">
                         Filtrlə
                     </button>
                     <p class="resultCount"><span>{{$count}}</span> Nəticə</p>
@@ -99,6 +119,7 @@
                 <th scope="col" class="px-6 py-4">Basvuru İxtisası</th>
                 <th scope="col" class="px-6 py-4">Universitet</th>
                 <th scope="col" class="px-6 py-4">Proqram</th>
+
                 <th scope="col" class="px-6 py-4 text-center">Digər</th>
             </tr>
             </thead>
@@ -159,3 +180,58 @@
     <x-pagination :paginator="$users"/>
 
 @endsection
+
+@push('scripts')
+    <script>
+        $(document).ready(function () {
+            function loadDropdowns(educationLevelId, selectedSchoolType, selectedProfessions) {
+                if (!educationLevelId) return;
+
+                $.ajax({
+                    url: '/get-school-types/' + educationLevelId,
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (data) {
+                        let schoolTypeSelect = $('select[name="school_type_id"]');
+                        let professionSelect = $('select[name="profession_id[]"]');
+
+                        schoolTypeSelect.empty().append('<option value="">Məktəb növü seçin</option>');
+                        professionSelect.empty().append('<option value="">İxtisas seçin</option>');
+
+                        // Məktəb növləri
+                        $.each(data.schoolTypes, function (key, schoolType) {
+                            let selected = (schoolType.id == selectedSchoolType) ? 'selected' : '';
+                            schoolTypeSelect.append('<option value="' + schoolType.id + '" ' + selected + '>' + schoolType.title + '</option>');
+                        });
+
+                        // İxtisaslar
+                        $.each(data.professions, function (key, profession) {
+                            // Array daxilində olub-olmadığını yoxla
+                            let selected = (selectedProfessions && selectedProfessions.includes(profession.id.toString())) ? 'selected' : '';
+                            professionSelect.append('<option value="' + profession.id + '" ' + selected + '>' + profession.title + '</option>');
+                        });
+
+                        // Select2 yenilə
+                        professionSelect.trigger('change');
+                    }
+                });
+            }
+
+            // Seçilmiş dəyərləri almaq
+            let selectedEducationLevel = $('select[name="education_level_id"]').val();
+            let selectedSchoolType = "{{ request('school_type_id') ?? '' }}";
+
+            // PHP-dən array kimi gələn dəyərləri JavaScript array-ə çevir
+            let selectedProfessions = {!! json_encode((array)request('profession_id', [])) !!};
+
+            if (selectedEducationLevel) {
+                loadDropdowns(selectedEducationLevel, selectedSchoolType, selectedProfessions);
+            }
+
+            $('select[name="education_level_id"]').change(function () {
+                let educationLevelId = $(this).val();
+                loadDropdowns(educationLevelId, "", []);
+            });
+        });
+    </script>
+@endpush

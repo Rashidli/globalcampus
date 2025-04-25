@@ -82,19 +82,19 @@ class StudentController extends Controller
             ->when($request->filled('name'), fn($q) => $q->where('name', 'like', '%' . $request->name . '%'))
             ->when($request->filled('surname'), fn($q) => $q->where('surname', 'like', '%' . $request->surname . '%'))
             ->when($request->filled('agent_id') && $user->type !== UserType::AGENT,
-                fn($q) => $q->where('agent_id', $request->agent_id))
+                fn($q) => $q->whereIn('agent_id', $request->agent_id))
             ->when($request->filled('university_list_id'), fn($q) => $q->whereHas('programs',
-                fn($q) => $q->where('university_list_id', $request->university_list_id)))
+                fn($q) => $q->whereIn('university_list_id', $request->university_list_id)))
             ->when($request->filled('period_id'), fn($q) => $q->whereHas('programs',
-                fn($q) => $q->where('period_id', $request->period_id)))
+                fn($q) => $q->whereIn('period_id', $request->period_id)))
             ->when($request->filled('education_level_id'), fn($q) => $q->whereHas('programs',
                 fn($q) => $q->where('education_level_id', $request->education_level_id)))
-            ->when($request->filled('school_type_id'), fn($q) => $q->whereHas('programs',
-                fn($q) => $q->where('school_type_id', $request->school_type_id)))
-            ->when($request->filled('country_id'), fn($q) => $q->whereHas('programs',
-                fn($q) => $q->where('country_id', $request->country_id)))
+//            ->when($request->filled('school_type_id'), fn($q) => $q->whereHas('programs',
+//                fn($q) => $q->where('school_type_id', $request->school_type_id)))
+//            ->when($request->filled('country_id'), fn($q) => $q->whereHas('programs',
+//                fn($q) => $q->where('country_id', $request->country_id)))
             ->when($request->filled('profession_id'), fn($q) => $q->whereHas('programs.tariff',
-                fn($q) => $q->where('profession_id', $request->profession_id)));
+                fn($q) => $q->whereIn('profession_id', $request->profession_id)));
     }
 
 

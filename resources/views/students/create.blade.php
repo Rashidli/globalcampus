@@ -120,7 +120,7 @@
                         <select name="citizenship" class="select2">
                             <option value="">Seçin</option>
                             @foreach($citizenships as $citizenship)
-                                <option value="{{$citizenship->title}}" >{{$citizenship->title}}</option>
+                                <option value="{{$citizenship->title}}" {{$citizenship->title == 'Azərbaycan' ? 'selected' : ''}} >{{$citizenship->title}}</option>
                             @endforeach
                         </select>
                         @if($errors->first('citizenship_id'))
