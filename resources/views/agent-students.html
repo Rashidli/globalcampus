@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./assets/swiper/swiper.css">
+    <link rel="stylesheet" href="./assets/jquery-nice-select-1.1.0/css/nice-select.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/style/style.css">
+</head>
+<body>
+    <div class="dashboard">
+        <nav>
+            <div class="navbar-top">
+                <a href="index.html" class="nav-logo">
+                    <img src="./assets/images/logo.svg" alt="">
+                </a>
+                <button class="hamburger" type="button">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M22 7L2 7" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round"/>
+                        <path d="M19 12L5 12" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round"/>
+                        <path d="M16 17H8" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                        
+                </button>
+            </div>
+            <div class="navbar-menu">
+                <div class="navbar-menu-links">
+                    <a href="students.html" class="navbar-menu-link active">
+                        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="8.24998" cy="5.49998" r="3.66667" stroke="black" stroke-opacity="0.7" stroke-width="1.5"/>
+                            <path d="M13.75 8.25C15.2688 8.25 16.5 7.01878 16.5 5.5C16.5 3.98122 15.2688 2.75 13.75 2.75" stroke="black" stroke-opacity="0.7" stroke-width="1.5" stroke-linecap="round"/>
+                            <ellipse cx="8.24998" cy="15.5834" rx="6.41667" ry="3.66667" stroke="black" stroke-opacity="0.7" stroke-width="1.5"/>
+                            <path d="M16.5 12.8333C18.1081 13.186 19.25 14.079 19.25 15.125C19.25 16.0685 18.3207 16.8877 16.9583 17.2979" stroke="black" stroke-opacity="0.7" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                        Tələbələr
+                    </a>
+                </div>
+                <div class="navbar-menu-bottom">
+                    <div class="navbar-menu-bottom-links">
+                        <button class="exitProfile" type="button">
+                            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8.25177 6.41671C8.26287 4.42293 8.35128 3.34318 9.05563 2.63883C9.86109 1.83337 11.1575 1.83337 13.7502 1.83337L14.6668 1.83337C17.2596 1.83337 18.5559 1.83337 19.3614 2.63883C20.1668 3.44429 20.1668 4.74065 20.1668 7.33337L20.1668 14.6667C20.1668 17.2594 20.1668 18.5558 19.3614 19.3613C18.5559 20.1667 17.2596 20.1667 14.6668 20.1667H13.7502C11.1575 20.1667 9.86109 20.1667 9.05563 19.3613C8.35128 18.6569 8.26287 17.5771 8.25177 15.5834" stroke="#FF1346" stroke-opacity="0.7" stroke-width="1.5" stroke-linecap="round"/>
+                                <path d="M13.75 11L1.83333 11M1.83333 11L5.04167 8.25M1.83333 11L5.04167 13.75" stroke="#FF1346" stroke-opacity="0.7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            Çıxış                                
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div class="dashboard-body">
+            <div class="page-head">
+                <h1>Tələbələr</h1>
+                <div class="head-userProfile">
+                    <h2>Agentin Adı</h2>
+                    <!-- Burada userin ad ve soyadinin ilk herifi olacaq -->
+                    <p>AA</p>
+                </div>
+            </div> 
+            <div class="students-filter">
+                <div class="students-filter-head">
+                    <p>Filterlə:</p>
+                    <!-- Aşağıdakı input və ya select bir şey dəyişəndə temizle butonuda gorunemelidi :dd, indilik atiram kommente, bi zehmet hell edersen -->
+                    <!-- <button class="clearStudentFilter">
+                        <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15 5.5L5 15.5" stroke="#1661C3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M5 5.5L15 15.5" stroke="#1661C3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        Təmizlə                            
+                    </button> -->
+                </div>
+                <div class="agentCRM-students-filter-items">
+                    <div class="students-filter-search">
+                        <button class="studentSeacrhBtn">
+                            <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M9.58329 2.79169C5.55622 2.79169 2.29163 6.05628 2.29163 10.0834C2.29163 14.1104 5.55622 17.375 9.58329 17.375C13.6104 17.375 16.875 14.1104 16.875 10.0834C16.875 6.05628 13.6104 2.79169 9.58329 2.79169ZM1.04163 10.0834C1.04163 5.36592 4.86586 1.54169 9.58329 1.54169C14.3007 1.54169 18.125 5.36592 18.125 10.0834C18.125 14.8008 14.3007 18.625 9.58329 18.625C4.86586 18.625 1.04163 14.8008 1.04163 10.0834ZM16.2247 16.7247C16.4688 16.4807 16.8645 16.4807 17.1086 16.7247L18.7752 18.3914C19.0193 18.6355 19.0193 19.0312 18.7752 19.2753C18.5312 19.5194 18.1354 19.5194 17.8913 19.2753L16.2247 17.6086C15.9806 17.3646 15.9806 16.9688 16.2247 16.7247Z" fill="black"/>
+                            </svg>
+                        </button>
+                        <input type="text" placeholder="Axtar">
+                    </div>
+                    <div class="students-filter-main">
+                        <input type="text" placeholder="Ölkə, şəhər">
+                        <select name="" id="">
+                            <option value="">Aktiv</option>
+                            <option value="">Deaktiv</option>
+                            <option value="">Proses bitib</option>
+                            <option value="">Viza imtina</option>
+                            <option value="">Qəbu olunub</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="AgentCRM-table-students-container">
+                <table>
+                  <thead>
+                    <tr>
+                      <th class="studentFullName">Ad və soyad</th>
+                      <th class="studentService">Xidmət</th>
+                      <th class="studentCountry">Ölkə, şəhər</th>
+                      <th class="studentStatus">Status</th>
+                      <th class="studentOthers">Digər</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="studentFullName">İlaha Nazarova</td>
+                      <td class="studentService">Amerikada təhsil</td>
+                      <td class="studentCountry">Amerika, New York</td>
+                      <!-- statuslar uygun olaraq bu classlar elave edile biler
+                      active,deactive,finished,rejectaccept -->
+                      <td class="studentStatus active">Aktiv</td>
+                      <td class="studentOtherButtons">
+                        <a href="agent-student-view.html" class="studentView">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g clip-path="url(#clip0_122_2876)">
+                                <path d="M2.72916 12.7464C2.02088 11.8262 1.66675 11.3661 1.66675 9.99998C1.66675 8.63383 2.02088 8.17375 2.72916 7.25359C4.14338 5.41628 6.51518 3.33331 10.0001 3.33331C13.485 3.33331 15.8568 5.41628 17.271 7.25359C17.9793 8.17375 18.3334 8.63383 18.3334 9.99998C18.3334 11.3661 17.9793 11.8262 17.271 12.7464C15.8568 14.5837 13.485 16.6666 10.0001 16.6666C6.51518 16.6666 4.14339 14.5837 2.72916 12.7464Z" stroke="black" stroke-opacity="0.9" stroke-width="1.5"/>
+                                <path d="M12.5 10C12.5 11.3807 11.3807 12.5 10 12.5C8.61929 12.5 7.5 11.3807 7.5 10C7.5 8.61929 8.61929 7.5 10 7.5C11.3807 7.5 12.5 8.61929 12.5 10Z" stroke="black" stroke-opacity="0.9" stroke-width="1.5"/>
+                                </g>
+                                <defs>
+                                <clipPath id="clip0_122_2876">
+                                <rect width="20" height="20" fill="white"/>
+                                </clipPath>
+                                </defs>
+                            </svg>
+                        </a>
+                        
+                      </td>
+                    </tr>
+                    <tr>
+                        <td class="studentFullName">İlaha Nazarova</td>
+                        <td class="studentService">Amerikada təhsil</td>
+                        <td class="studentCountry">Amerika, New York</td>
+                        <!-- statuslar uygun olaraq bu classlar elave edile biler
+                        active,deactive,finished,rejectaccept -->
+                        <td class="studentStatus active">Aktiv</td>
+                        <td class="studentOtherButtons">
+                          <a href="agent-student-view.html" class="studentOtherBtn">
+                              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <g clip-path="url(#clip0_122_2876)">
+                                  <path d="M2.72916 12.7464C2.02088 11.8262 1.66675 11.3661 1.66675 9.99998C1.66675 8.63383 2.02088 8.17375 2.72916 7.25359C4.14338 5.41628 6.51518 3.33331 10.0001 3.33331C13.485 3.33331 15.8568 5.41628 17.271 7.25359C17.9793 8.17375 18.3334 8.63383 18.3334 9.99998C18.3334 11.3661 17.9793 11.8262 17.271 12.7464C15.8568 14.5837 13.485 16.6666 10.0001 16.6666C6.51518 16.6666 4.14339 14.5837 2.72916 12.7464Z" stroke="black" stroke-opacity="0.9" stroke-width="1.5"/>
+                                  <path d="M12.5 10C12.5 11.3807 11.3807 12.5 10 12.5C8.61929 12.5 7.5 11.3807 7.5 10C7.5 8.61929 8.61929 7.5 10 7.5C11.3807 7.5 12.5 8.61929 12.5 10Z" stroke="black" stroke-opacity="0.9" stroke-width="1.5"/>
+                                  </g>
+                                  <defs>
+                                  <clipPath id="clip0_122_2876">
+                                  <rect width="20" height="20" fill="white"/>
+                                  </clipPath>
+                                  </defs>
+                              </svg>
+                          </a>
+                          
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="studentFullName">İlaha Nazarova</td>
+                        <td class="studentService">Amerikada təhsil</td>
+                        <td class="studentCountry">Amerika, New York</td>
+                        <!-- statuslar uygun olaraq bu classlar elave edile biler
+                        active,deactive,finished,rejectaccept -->
+                        <td class="studentStatus active">Aktiv</td>
+                        <td class="studentOtherButtons">
+                          <a href="agent-student-view.html" class="studentOtherBtn">
+                              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <g clip-path="url(#clip0_122_2876)">
+                                  <path d="M2.72916 12.7464C2.02088 11.8262 1.66675 11.3661 1.66675 9.99998C1.66675 8.63383 2.02088 8.17375 2.72916 7.25359C4.14338 5.41628 6.51518 3.33331 10.0001 3.33331C13.485 3.33331 15.8568 5.41628 17.271 7.25359C17.9793 8.17375 18.3334 8.63383 18.3334 9.99998C18.3334 11.3661 17.9793 11.8262 17.271 12.7464C15.8568 14.5837 13.485 16.6666 10.0001 16.6666C6.51518 16.6666 4.14339 14.5837 2.72916 12.7464Z" stroke="black" stroke-opacity="0.9" stroke-width="1.5"/>
+                                  <path d="M12.5 10C12.5 11.3807 11.3807 12.5 10 12.5C8.61929 12.5 7.5 11.3807 7.5 10C7.5 8.61929 8.61929 7.5 10 7.5C11.3807 7.5 12.5 8.61929 12.5 10Z" stroke="black" stroke-opacity="0.9" stroke-width="1.5"/>
+                                  </g>
+                                  <defs>
+                                  <clipPath id="clip0_122_2876">
+                                  <rect width="20" height="20" fill="white"/>
+                                  </clipPath>
+                                  </defs>
+                              </svg>
+                          </a>
+                          
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="studentFullName">İlaha Nazarova</td>
+                        <td class="studentService">Amerikada təhsil</td>
+                        <td class="studentCountry">Amerika, New York</td>
+                        <!-- statuslar uygun olaraq bu classlar elave edile biler
+                        active,deactive,finished,rejectaccept -->
+                        <td class="studentStatus active">Aktiv</td>
+                        <td class="studentOtherButtons">
+                          <a href="agent-student-view.html" class="studentOtherBtn">
+                              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <g clip-path="url(#clip0_122_2876)">
+                                  <path d="M2.72916 12.7464C2.02088 11.8262 1.66675 11.3661 1.66675 9.99998C1.66675 8.63383 2.02088 8.17375 2.72916 7.25359C4.14338 5.41628 6.51518 3.33331 10.0001 3.33331C13.485 3.33331 15.8568 5.41628 17.271 7.25359C17.9793 8.17375 18.3334 8.63383 18.3334 9.99998C18.3334 11.3661 17.9793 11.8262 17.271 12.7464C15.8568 14.5837 13.485 16.6666 10.0001 16.6666C6.51518 16.6666 4.14339 14.5837 2.72916 12.7464Z" stroke="black" stroke-opacity="0.9" stroke-width="1.5"/>
+                                  <path d="M12.5 10C12.5 11.3807 11.3807 12.5 10 12.5C8.61929 12.5 7.5 11.3807 7.5 10C7.5 8.61929 8.61929 7.5 10 7.5C11.3807 7.5 12.5 8.61929 12.5 10Z" stroke="black" stroke-opacity="0.9" stroke-width="1.5"/>
+                                  </g>
+                                  <defs>
+                                  <clipPath id="clip0_122_2876">
+                                  <rect width="20" height="20" fill="white"/>
+                                  </clipPath>
+                                  </defs>
+                              </svg>
+                          </a>
+                          
+                        </td>
+                      </tr>
+                  </tbody>
+                </table>
+            </div>
+            <div class="pagination">
+                <a href="" class="prevPage">
+                    <svg width="7" height="12" viewBox="0 0 7 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0.22 6.71997C0.0793075 6.57946 0.000175052 6.38882 0 6.18997V5.80997C0.00230401 5.61156 0.081116 5.4217 0.22 5.27997L5.36 0.149974C5.45388 0.055318 5.58168 0.0020752 5.715 0.0020752C5.84832 0.0020752 5.97612 0.055318 6.07 0.149974L6.78 0.859974C6.87406 0.952138 6.92707 1.07828 6.92707 1.20997C6.92707 1.34166 6.87406 1.46781 6.78 1.55997L2.33 5.99997L6.78 10.44C6.87466 10.5339 6.9279 10.6617 6.9279 10.795C6.9279 10.9283 6.87466 11.0561 6.78 11.15L6.07 11.85C5.97612 11.9446 5.84832 11.9979 5.715 11.9979C5.58168 11.9979 5.45388 11.9446 5.36 11.85L0.22 6.71997Z" fill="#132A1B"/>
+                        </svg>                        
+                </a>
+                <a href="" class="pagination-item currentPage">1</a>
+                <a href="" class="pagination-item">2</a>
+                <a href="" class="pagination-item">...</a>
+                <a href="" class="pagination-item">10</a>
+                <a href="" class="nextPage">
+                    <svg width="7" height="12" viewBox="0 0 7 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6.78 6.71997C6.92069 6.57946 6.99982 6.38882 7 6.18997V5.80997C6.9977 5.61156 6.91888 5.4217 6.78 5.27997L1.64 0.149974C1.54612 0.055318 1.41832 0.0020752 1.285 0.0020752C1.15168 0.0020752 1.02388 0.055318 0.93 0.149974L0.22 0.859974C0.125936 0.952138 0.0729284 1.07828 0.0729284 1.20997C0.0729284 1.34166 0.125936 1.46781 0.22 1.55997L4.67 5.99997L0.22 10.44C0.125343 10.5339 0.0721006 10.6617 0.0721006 10.795C0.0721006 10.9283 0.125343 11.0561 0.22 11.15L0.93 11.85C1.02388 11.9446 1.15168 11.9979 1.285 11.9979C1.41832 11.9979 1.54612 11.9446 1.64 11.85L6.78 6.71997Z" fill="#132A1B"/>
+                        </svg>                        
+                </a>
+            </div>
+        </div>
+    </div>
+    
+
+    <script src="./assets/jquery-nice-select-1.1.0/js/jquery.js"></script>
+    <script src="./assets/jquery-nice-select-1.1.0/js/jquery.nice-select.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('select').niceSelect()
+        })
+    </script>
+    <script src="./assets/swiper/swiper.js"></script>
+    <script src="./assets/js/index.js"></script>
+</body>
+</html>

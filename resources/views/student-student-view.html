@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./assets/swiper/swiper.css">
+    <link rel="stylesheet" href="./assets/jquery-nice-select-1.1.0/css/nice-select.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/style/style.css">
+</head>
+<body>
+    <div class="dashboard">
+        <nav>
+            <div class="navbar-top">
+                <a href="index.html" class="nav-logo">
+                    <img src="./assets/images/logo.svg" alt="">
+                </a>
+                <button class="hamburger" type="button">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M22 7L2 7" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round"/>
+                        <path d="M19 12L5 12" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round"/>
+                        <path d="M16 17H8" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                        
+                </button>
+            </div>
+            <div class="navbar-menu">
+                <div class="navbar-menu-links">
+                    <a href="student-student-view.html" class="navbar-menu-link active">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="12" cy="6" r="4" fill="black"/>
+                            <ellipse cx="12" cy="17" rx="7" ry="4" fill="black"/>
+                            </svg>
+                            
+                        Məlumatlarım
+                    </a>
+                </div>
+                <div class="navbar-menu-bottom">
+                    <div class="navbar-menu-bottom-links">
+                        <button class="exitProfile" type="button">
+                            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8.25177 6.41671C8.26287 4.42293 8.35128 3.34318 9.05563 2.63883C9.86109 1.83337 11.1575 1.83337 13.7502 1.83337L14.6668 1.83337C17.2596 1.83337 18.5559 1.83337 19.3614 2.63883C20.1668 3.44429 20.1668 4.74065 20.1668 7.33337L20.1668 14.6667C20.1668 17.2594 20.1668 18.5558 19.3614 19.3613C18.5559 20.1667 17.2596 20.1667 14.6668 20.1667H13.7502C11.1575 20.1667 9.86109 20.1667 9.05563 19.3613C8.35128 18.6569 8.26287 17.5771 8.25177 15.5834" stroke="#FF1346" stroke-opacity="0.7" stroke-width="1.5" stroke-linecap="round"/>
+                                <path d="M13.75 11L1.83333 11M1.83333 11L5.04167 8.25M1.83333 11L5.04167 13.75" stroke="#FF1346" stroke-opacity="0.7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            Çıxış                                
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div class="dashboard-body">
+            <div class="page-head">
+                <h1>Məlumatlarım</h1>
+                <div class="head-userProfile">
+                    <h2>Tələbənin Adı</h2>
+                    <!-- Burada userin ad ve soyadinin ilk herifi olacaq -->
+                    <p>AA</p>
+                </div>
+            </div>
+            <div class="student-detailView-container">
+                <p class="addedTime">02.12.2024</p>
+                <div class="student-detailView">
+                    <div class="student-detailView-left">
+                        <div class="detailView-left-top">
+                            <div class="top-fullName">
+                                <h2 class="studentFullName">Samir Piriyev</h2>
+                                <p>ID: <span>253642</span></p>
+                            </div>
+                            <!-- Statuslar: active, deactive, finished, reject, accept olabiler. uygun adli classlari 
+                            add ele. numune ucun active add etmisem -->
+                            <p class="studentStatus active">Aktiv</p>
+                        </div>
+                        <div class="studentPersonalInfoBox">
+                            <h3 class="boxTitle">Şəxsi məlumatlar</h3>
+                            <div class="infoList">
+                                <div class="info-list-item">
+                                    <p>Adı, soyadı və ata adı:</p>
+                                    <span>Samir Piriyev Tofiq</span>
+                                </div>
+                                <div class="info-list-item">
+                                    <p>Yönləndirən şəxs:</p>
+                                    <span>Parviz Mammadli</span>
+                                </div>
+                                <div class="info-list-item">
+                                    <p>Doğum tarixi:</p>
+                                    <span>14/05/2000</span>
+                                </div>
+                                <div class="info-list-item">
+                                    <p>Qeydiyyat ünvanı:</p>
+                                    <span>Şəmkir</span>
+                                </div>
+                                <div class="info-list-item">
+                                    <p>Ailə vəziyyəti:</p>
+                                    <span>Subay</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="studentContactInfoBox">
+                            <h3 class="boxTitle">Əlaqə</h3>
+                            <div class="infoList">
+                                <div class="info-list-item">
+                                    <p>Nömrə:</p>
+                                    <span>+994 50 000 00 00</span>
+                                </div>
+                                <div class="info-list-item">
+                                    <p>Email:</p>
+                                    <span>numune@gmail.com</span>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <div class="studentOtherInfoBox">
+                            <h3 class="boxTitle">Digər məlumatlar</h3>
+                            <div class="infoList">
+                                <div class="info-list-item">
+                                    <p>Melumat:</p>
+                                    <span>Melumat</span>
+                                </div>
+                                <div class="info-list-item">
+                                    <p>Melumat:</p>
+                                    <span>Melumat</span>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="student-detailView-right">
+                        <div class="student-detail-tabs">
+                            <button class="student-detail-tab active" type="button" id="studentGeneralDetail">
+                                <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M2.08301 5.91665C2.08301 4.3453 2.08301 3.55962 2.57116 3.07147C3.05932 2.58331 3.84499 2.58331 5.41634 2.58331C6.98769 2.58331 7.77336 2.58331 8.26152 3.07147C8.74967 3.55962 8.74967 4.3453 8.74967 5.91665V15.0833C8.74967 16.6547 8.74967 17.4403 8.26152 17.9285C7.77336 18.4166 6.98769 18.4166 5.41634 18.4166C3.84499 18.4166 3.05932 18.4166 2.57116 17.9285C2.08301 17.4403 2.08301 16.6547 2.08301 15.0833V5.91665Z" stroke="black" stroke-opacity="0.8" stroke-width="1.5"/>
+                                    <path d="M11.25 13.4166C11.25 11.8453 11.25 11.0596 11.7382 10.5715C12.2263 10.0833 13.012 10.0833 14.5833 10.0833C16.1547 10.0833 16.9404 10.0833 17.4285 10.5715C17.9167 11.0596 17.9167 11.8453 17.9167 13.4166V15.0833C17.9167 16.6547 17.9167 17.4403 17.4285 17.9285C16.9404 18.4166 16.1547 18.4166 14.5833 18.4166C13.012 18.4166 12.2263 18.4166 11.7382 17.9285C11.25 17.4403 11.25 16.6547 11.25 15.0833V13.4166Z" stroke="black" stroke-opacity="0.8" stroke-width="1.5"/>
+                                    <path d="M11.25 5.08331C11.25 4.30674 11.25 3.91846 11.3769 3.61217C11.546 3.20379 11.8705 2.87934 12.2789 2.71018C12.5851 2.58331 12.9734 2.58331 13.75 2.58331H15.4167C16.1932 2.58331 16.5815 2.58331 16.8878 2.71018C17.2962 2.87934 17.6206 3.20379 17.7898 3.61217C17.9167 3.91846 17.9167 4.30674 17.9167 5.08331C17.9167 5.85988 17.9167 6.24817 17.7898 6.55445C17.6206 6.96283 17.2962 7.28729 16.8878 7.45645C16.5815 7.58331 16.1932 7.58331 15.4167 7.58331H13.75C12.9734 7.58331 12.5851 7.58331 12.2789 7.45645C11.8705 7.28729 11.546 6.96283 11.3769 6.55445C11.25 6.24817 11.25 5.85988 11.25 5.08331Z" stroke="black" stroke-opacity="0.8" stroke-width="1.5"/>
+                                    </svg>
+                                    
+                                    Ümumi                                    
+                            </button>
+                            <button class="student-detail-tab" type="button" id="studentjobEducationDetail">
+                                <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="10" cy="13.8333" r="2.5" stroke="black" stroke-opacity="0.8" stroke-width="1.5"/>
+                                    <path d="M10 16.5499L8.11427 18.3578C7.84421 18.6167 7.70918 18.7461 7.59483 18.7909C7.33426 18.893 7.04521 18.8056 6.90814 18.5834C6.84799 18.4858 6.82924 18.3099 6.79175 17.9581C6.77058 17.7594 6.76 17.6601 6.72788 17.5769C6.65596 17.3906 6.50483 17.2457 6.31055 17.1768C6.22377 17.146 6.12016 17.1358 5.91295 17.1155C5.54593 17.0796 5.36243 17.0616 5.26069 17.004C5.02886 16.8725 4.93774 16.5954 5.04421 16.3456C5.09094 16.236 5.22597 16.1065 5.49603 15.8476L6.72788 14.6666L7.59483 13.7997" stroke="black" stroke-opacity="0.8" stroke-width="1.5"/>
+                                    <path d="M10 16.5499L11.8857 18.3578C12.1558 18.6167 12.2908 18.7461 12.4052 18.7909C12.6657 18.893 12.9548 18.8057 13.0919 18.5834C13.152 18.4859 13.1708 18.3099 13.2082 17.9581C13.2294 17.7594 13.24 17.6601 13.2721 17.5769C13.344 17.3906 13.4952 17.2457 13.6894 17.1768C13.7762 17.146 13.8798 17.1358 14.0871 17.1156C14.4541 17.0796 14.6376 17.0616 14.7393 17.004C14.9711 16.8726 15.0623 16.5954 14.9558 16.3456C14.9091 16.236 14.774 16.1065 14.504 15.8476L13.2721 14.6667L12.5 13.8945" stroke="black" stroke-opacity="0.8" stroke-width="1.5"/>
+                                    <path d="M14.4334 15.4965C16.0771 15.479 16.9932 15.376 17.6014 14.7678C18.3337 14.0356 18.3337 12.857 18.3337 10.5V7.16669C18.3337 4.80966 18.3337 3.63115 17.6014 2.89892C16.8692 2.16669 15.6907 2.16669 13.3337 2.16669L6.66699 2.16669C4.30997 2.16669 3.13146 2.16669 2.39922 2.89892C1.66699 3.63115 1.66699 4.80966 1.66699 7.16669L1.66699 10.5C1.66699 12.857 1.66699 14.0356 2.39923 14.7678C3.03955 15.4081 4.02114 15.4885 5.83366 15.4986" stroke="black" stroke-opacity="0.8" stroke-width="1.5"/>
+                                    <path d="M7.5 5.5L12.5 5.5" stroke="black" stroke-opacity="0.8" stroke-width="1.5" stroke-linecap="round"/>
+                                    <path d="M5.83301 8.41669H14.1663" stroke="black" stroke-opacity="0.8" stroke-width="1.5" stroke-linecap="round"/>
+                                    </svg>
+                                    
+                                Təhsil və iş
+                            </button>
+                            <button class="student-detail-tab" type="button" id="studentDocumentsDetail">
+                                <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M2.5 8.83335C2.5 5.69066 2.5 4.11931 3.47631 3.143C4.45262 2.16669 6.02397 2.16669 9.16667 2.16669H10.8333C13.976 2.16669 15.5474 2.16669 16.5237 3.143C17.5 4.11931 17.5 5.69066 17.5 8.83335V12.1667C17.5 15.3094 17.5 16.8807 16.5237 17.857C15.5474 18.8334 13.976 18.8334 10.8333 18.8334H9.16667C6.02397 18.8334 4.45262 18.8334 3.47631 17.857C2.5 16.8807 2.5 15.3094 2.5 12.1667V8.83335Z" stroke="black" stroke-opacity="0.8" stroke-width="1.5"/>
+                                    <path d="M6.66699 10.5H13.3337" stroke="black" stroke-opacity="0.8" stroke-width="1.5" stroke-linecap="round"/>
+                                    <path d="M6.66699 7.16669H13.3337" stroke="black" stroke-opacity="0.8" stroke-width="1.5" stroke-linecap="round"/>
+                                    <path d="M6.66699 13.8333H10.8337" stroke="black" stroke-opacity="0.8" stroke-width="1.5" stroke-linecap="round"/>
+                                    </svg>
+                                                                    
+                                Sənədlər
+                            </button>
+                            <button class="student-detail-tab" type="button" id="studentServicesDetail">
+                                <svg width="22" height="23" viewBox="0 0 22 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M14.6667 4.16827C16.6604 4.17937 17.7402 4.26779 18.4445 4.97214C19.25 5.77759 19.25 7.07396 19.25 9.66668V15.1667C19.25 17.7594 19.25 19.0558 18.4445 19.8612C17.6391 20.6667 16.3427 20.6667 13.75 20.6667H8.25C5.65728 20.6667 4.36091 20.6667 3.55546 19.8612C2.75 19.0558 2.75 17.7594 2.75 15.1667V9.66668C2.75 7.07396 2.75 5.77759 3.55546 4.97214C4.25981 4.26779 5.33956 4.17937 7.33333 4.16827" stroke="black" stroke-opacity="0.8" stroke-width="1.5"/>
+                                    <path d="M9.625 13.3333L15.5833 13.3333" stroke="black" stroke-opacity="0.8" stroke-width="1.5" stroke-linecap="round"/>
+                                    <path d="M6.41699 13.3333H6.87533" stroke="black" stroke-opacity="0.8" stroke-width="1.5" stroke-linecap="round"/>
+                                    <path d="M6.41699 10.125H6.87533" stroke="black" stroke-opacity="0.8" stroke-width="1.5" stroke-linecap="round"/>
+                                    <path d="M6.41699 16.5417H6.87533" stroke="black" stroke-opacity="0.8" stroke-width="1.5" stroke-linecap="round"/>
+                                    <path d="M9.625 10.125H15.5833" stroke="black" stroke-opacity="0.8" stroke-width="1.5" stroke-linecap="round"/>
+                                    <path d="M9.625 16.5417H15.5833" stroke="black" stroke-opacity="0.8" stroke-width="1.5" stroke-linecap="round"/>
+                                    <path d="M7.33301 3.70831C7.33301 2.94892 7.94862 2.33331 8.70801 2.33331H13.2913C14.0507 2.33331 14.6663 2.94892 14.6663 3.70831V4.62498C14.6663 5.38437 14.0507 5.99998 13.2913 5.99998H8.70801C7.94862 5.99998 7.33301 5.38437 7.33301 4.62498V3.70831Z" stroke="black" stroke-opacity="0.8" stroke-width="1.5"/>
+                                    </svg>
+                                                                                                       
+                                    Xidmət
+                            </button>
+                        </div>
+                        <div class="student-General-tabContent student-tabContent" data-id="studentGeneralDetail">
+                            <h2 class="smallTitle">Amerikada təhsil</h2>
+                            <div class="student-General-priceBoxes">
+                                <div class="priceBox">
+                                    <div class="box-icon">
+                                        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M25.4953 19.0724C25.0891 18.6662 24.5491 18.4425 23.9746 18.4425C23.4002 18.4425 22.8602 18.6662 22.454 19.0723L20.3673 21.159C19.998 20.505 19.2964 20.0625 18.4933 20.0625H16.9077C16.302 20.0625 15.6956 19.919 15.1542 19.6475C14.4462 19.2926 13.6533 19.1049 12.8613 19.1049H12.1521C11.3737 19.1049 10.6191 19.2669 9.90908 19.5862L9.42597 19.8036C8.87231 20.0527 8.28377 20.179 7.67668 20.179H6.694C6.52458 19.7558 6.11109 19.4556 5.62809 19.4556H3.02441C2.39119 19.4556 1.87598 19.9709 1.87598 20.6041V26.8516C1.87598 27.4848 2.39119 28 3.02441 28H5.62809C6.00275 28 6.33503 27.8188 6.54481 27.5404H19.0253C19.8348 27.5404 20.6202 27.2051 21.18 26.6204L25.5001 22.1087C26.3337 21.2698 26.3321 19.9092 25.4953 19.0724ZM5.5734 26.7969H3.0791V20.6589H5.5734V26.7969ZM24.6445 21.2628C24.6415 21.2659 24.6384 21.269 24.6354 21.2721L20.311 25.7883C19.977 26.1372 19.5083 26.3373 19.0253 26.3373H6.77652V21.3822H7.67668C8.45505 21.3822 9.20968 21.2202 9.91963 20.9009L10.4027 20.6835C10.9565 20.4344 11.5451 20.3081 12.1521 20.3081H12.8613C13.467 20.3081 14.0734 20.4516 14.6149 20.7231C15.3229 21.0781 16.1157 21.2657 16.9077 21.2657H18.4933C19.0156 21.2657 19.4406 21.6907 19.4406 22.213C19.4406 22.2355 19.4329 22.3282 19.4329 22.3282C19.3759 22.7963 18.9766 23.1604 18.4933 23.1604H13.0074C12.6752 23.1604 12.4058 23.4297 12.4058 23.762C12.4058 24.0942 12.6752 24.3635 13.0074 24.3635H18.4933C19.5386 24.3635 20.4116 23.6138 20.6039 22.6239L23.3047 19.9231C23.4836 19.7441 23.7216 19.6456 23.9746 19.6456C24.2276 19.6456 24.4656 19.7441 24.6445 19.9231C25.0139 20.2925 25.0139 20.8935 24.6445 21.2628Z" fill="black"/>
+                                            <path d="M13.9002 17.9137C18.839 17.9137 22.857 13.8957 22.857 8.95683C22.857 4.018 18.839 0 13.9002 0C8.96136 0 4.94336 4.018 4.94336 8.95683C4.94336 13.8957 8.96136 17.9137 13.9002 17.9137ZM13.9002 1.20312C18.1756 1.20312 21.6539 4.68141 21.6539 8.95683C21.6539 13.2322 18.1756 16.7105 13.9002 16.7105C9.62477 16.7105 6.14648 13.2322 6.14648 8.95683C6.14648 4.68141 9.62477 1.20312 13.9002 1.20312Z" fill="black"/>
+                                            <path d="M14.6673 8.367C14.3382 8.25068 13.9347 8.09673 13.7277 7.93606C13.7175 7.91895 13.7012 7.85004 13.7315 7.76013C13.7481 7.71119 13.79 7.62489 13.8849 7.59629C14.1451 7.51792 14.3289 7.59831 14.4207 7.6588L14.474 7.69992C14.7367 7.90314 15.1146 7.85485 15.3178 7.59202C15.5211 7.3292 15.4728 6.95136 15.2099 6.74814C15.2099 6.74814 15.1256 6.68328 15.1171 6.67737C15.0232 6.61219 14.8584 6.51408 14.637 6.4443V6.43134C14.637 6.09911 14.3677 5.82977 14.0355 5.82977C13.7032 5.82977 13.4339 6.09911 13.4339 6.43134V6.48044C12.9726 6.65993 12.6334 7.07304 12.5373 7.58289C12.4412 8.09263 12.6117 8.58974 12.9821 8.8803C13.323 9.14761 13.8008 9.33672 14.2663 9.50133C14.464 9.57122 14.548 9.70378 14.5158 9.8953C14.4903 10.0471 14.3596 10.3045 14.0315 10.3067C13.6664 10.3092 13.5889 10.297 13.3265 10.1254C13.0485 9.94348 12.6757 10.0215 12.4937 10.2994C12.3118 10.5775 12.3898 10.9503 12.6678 11.1322C12.9558 11.3206 13.1865 11.418 13.4339 11.4664V11.4822C13.4339 11.8144 13.7032 12.0838 14.0355 12.0838C14.3677 12.0838 14.637 11.8144 14.637 11.4822V11.3976C15.1847 11.1879 15.6001 10.7025 15.7023 10.0947C15.8315 9.32584 15.4156 8.63152 14.6673 8.367Z" fill="#33CCCC"/>
+                                            <path d="M13.901 2.71014C10.4566 2.71014 7.6543 5.51239 7.6543 8.95682C7.6543 12.4013 10.4565 15.2035 13.901 15.2035C17.3454 15.2035 20.1477 12.4013 20.1477 8.95682C20.1477 5.51239 17.3454 2.71014 13.901 2.71014ZM13.901 14.0004C11.12 14.0004 8.85742 11.7378 8.85742 8.95682C8.85742 6.1758 11.12 3.91327 13.901 3.91327C16.6821 3.91327 18.9446 6.1758 18.9446 8.95682C18.9446 11.7378 16.682 14.0004 13.901 14.0004Z" fill="#33CCCC"/>
+                                            </svg>                                            
+                                    </div>
+                                    <h3 class="boxTitle">Ümumi məbləğ:</h3>
+                                    <p><span>10000</span> AZN</p>
+                                </div>
+                                <div class="priceBox">
+                                    <div class="box-icon">
+                                        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M25.4953 19.0724C25.0891 18.6662 24.5491 18.4425 23.9746 18.4425C23.4002 18.4425 22.8602 18.6662 22.454 19.0723L20.3673 21.159C19.998 20.505 19.2964 20.0625 18.4933 20.0625H16.9077C16.302 20.0625 15.6956 19.919 15.1542 19.6475C14.4462 19.2926 13.6533 19.1049 12.8613 19.1049H12.1521C11.3737 19.1049 10.6191 19.2669 9.90908 19.5862L9.42597 19.8036C8.87231 20.0527 8.28377 20.179 7.67668 20.179H6.694C6.52458 19.7558 6.11109 19.4556 5.62809 19.4556H3.02441C2.39119 19.4556 1.87598 19.9709 1.87598 20.6041V26.8516C1.87598 27.4848 2.39119 28 3.02441 28H5.62809C6.00275 28 6.33503 27.8188 6.54481 27.5404H19.0253C19.8348 27.5404 20.6202 27.2051 21.18 26.6204L25.5001 22.1087C26.3337 21.2698 26.3321 19.9092 25.4953 19.0724ZM5.5734 26.7969H3.0791V20.6589H5.5734V26.7969ZM24.6445 21.2628C24.6415 21.2659 24.6384 21.269 24.6354 21.2721L20.311 25.7883C19.977 26.1372 19.5083 26.3373 19.0253 26.3373H6.77652V21.3822H7.67668C8.45505 21.3822 9.20968 21.2202 9.91963 20.9009L10.4027 20.6835C10.9565 20.4344 11.5451 20.3081 12.1521 20.3081H12.8613C13.467 20.3081 14.0734 20.4516 14.6149 20.7231C15.3229 21.0781 16.1157 21.2657 16.9077 21.2657H18.4933C19.0156 21.2657 19.4406 21.6907 19.4406 22.213C19.4406 22.2355 19.4329 22.3282 19.4329 22.3282C19.3759 22.7963 18.9766 23.1604 18.4933 23.1604H13.0074C12.6752 23.1604 12.4058 23.4297 12.4058 23.762C12.4058 24.0942 12.6752 24.3635 13.0074 24.3635H18.4933C19.5386 24.3635 20.4116 23.6138 20.6039 22.6239L23.3047 19.9231C23.4836 19.7441 23.7216 19.6456 23.9746 19.6456C24.2276 19.6456 24.4656 19.7441 24.6445 19.9231C25.0139 20.2925 25.0139 20.8935 24.6445 21.2628Z" fill="black"/>
+                                            <path d="M13.9002 17.9137C18.839 17.9137 22.857 13.8957 22.857 8.95683C22.857 4.018 18.839 0 13.9002 0C8.96136 0 4.94336 4.018 4.94336 8.95683C4.94336 13.8957 8.96136 17.9137 13.9002 17.9137ZM13.9002 1.20312C18.1756 1.20312 21.6539 4.68141 21.6539 8.95683C21.6539 13.2322 18.1756 16.7105 13.9002 16.7105C9.62477 16.7105 6.14648 13.2322 6.14648 8.95683C6.14648 4.68141 9.62477 1.20312 13.9002 1.20312Z" fill="black"/>
+                                            <path d="M14.6673 8.367C14.3382 8.25068 13.9347 8.09673 13.7277 7.93606C13.7175 7.91895 13.7012 7.85004 13.7315 7.76013C13.7481 7.71119 13.79 7.62489 13.8849 7.59629C14.1451 7.51792 14.3289 7.59831 14.4207 7.6588L14.474 7.69992C14.7367 7.90314 15.1146 7.85485 15.3178 7.59202C15.5211 7.3292 15.4728 6.95136 15.2099 6.74814C15.2099 6.74814 15.1256 6.68328 15.1171 6.67737C15.0232 6.61219 14.8584 6.51408 14.637 6.4443V6.43134C14.637 6.09911 14.3677 5.82977 14.0355 5.82977C13.7032 5.82977 13.4339 6.09911 13.4339 6.43134V6.48044C12.9726 6.65993 12.6334 7.07304 12.5373 7.58289C12.4412 8.09263 12.6117 8.58974 12.9821 8.8803C13.323 9.14761 13.8008 9.33672 14.2663 9.50133C14.464 9.57122 14.548 9.70378 14.5158 9.8953C14.4903 10.0471 14.3596 10.3045 14.0315 10.3067C13.6664 10.3092 13.5889 10.297 13.3265 10.1254C13.0485 9.94348 12.6757 10.0215 12.4937 10.2994C12.3118 10.5775 12.3898 10.9503 12.6678 11.1322C12.9558 11.3206 13.1865 11.418 13.4339 11.4664V11.4822C13.4339 11.8144 13.7032 12.0838 14.0355 12.0838C14.3677 12.0838 14.637 11.8144 14.637 11.4822V11.3976C15.1847 11.1879 15.6001 10.7025 15.7023 10.0947C15.8315 9.32584 15.4156 8.63152 14.6673 8.367Z" fill="#33CCCC"/>
+                                            <path d="M13.901 2.71014C10.4566 2.71014 7.6543 5.51239 7.6543 8.95682C7.6543 12.4013 10.4565 15.2035 13.901 15.2035C17.3454 15.2035 20.1477 12.4013 20.1477 8.95682C20.1477 5.51239 17.3454 2.71014 13.901 2.71014ZM13.901 14.0004C11.12 14.0004 8.85742 11.7378 8.85742 8.95682C8.85742 6.1758 11.12 3.91327 13.901 3.91327C16.6821 3.91327 18.9446 6.1758 18.9446 8.95682C18.9446 11.7378 16.682 14.0004 13.901 14.0004Z" fill="#33CCCC"/>
+                                            </svg>                                            
+                                    </div>
+                                    <h3 class="boxTitle">Qalıq məbləğ:</h3>
+                                    <p><span>6000</span> AZN</p>
+                                </div>
+                            </div>
+                            <div class="studentGeneralDetails-steps">
+                                <h2 class="smallTitle">Mərhələlər</h2>
+                                <div class="steps-list">
+                                    <!-- her merheleni kecende o "passed" classi add olunacaq -->
+                                    <div class="step-item passed">
+                                        <div class="step-check">
+                                            <svg width="11" height="10" viewBox="0 0 11 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M0.833008 5.75L3.45206 8.75L9.99967 1.25" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>                                                
+                                        </div>
+                                        <div class="step-item-body">
+                                            <h3 class="step-title">Vizaya müraciət</h3>
+                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
+                                        </div>
+                                    </div>
+                                    <div class="step-item">
+                                        <div class="step-check">
+                                            <svg width="11" height="10" viewBox="0 0 11 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M0.833008 5.75L3.45206 8.75L9.99967 1.25" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>                                                
+                                        </div>
+                                        <div class="step-item-body">
+                                            <h3 class="step-title">Qeydiyyatdan keçdi</h3>
+                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
+                                        </div>
+                                    </div>
+                                    <div class="step-item">
+                                        <div class="step-check">
+                                            <svg width="11" height="10" viewBox="0 0 11 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M0.833008 5.75L3.45206 8.75L9.99967 1.25" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>                                                
+                                        </div>
+                                        <div class="step-item-body">
+                                            <h3 class="step-title">Qeydiyyatdan keçdi</h3>
+                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
+                                        </div>
+                                    </div>
+                                    <div class="step-item">
+                                        <div class="step-check">
+                                            <svg width="11" height="10" viewBox="0 0 11 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M0.833008 5.75L3.45206 8.75L9.99967 1.25" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>                                                
+                                        </div>
+                                        <div class="step-item-body">
+                                            <h3 class="step-title">Qeydiyyatdan keçdi</h3>
+                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
+                                        </div>
+                                    </div>
+                                    <div class="step-item">
+                                        <div class="step-check">
+                                            <svg width="11" height="10" viewBox="0 0 11 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M0.833008 5.75L3.45206 8.75L9.99967 1.25" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>                                                
+                                        </div>
+                                        <div class="step-item-body">
+                                            <h3 class="step-title">Qeydiyyatdan keçdi</h3>
+                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="student-jobEducation-tabContent student-tabContent" data-id="studentjobEducationDetail">
+                            <div class="student-detail-educationBox">
+                                <h2 class="smallTitle">Təhsil</h2>
+                                <div class="education-list-titles">
+                                    <p class="education-title">Müəssisənin adı</p>
+                                    <p class="education-start-title">Başlama tarixi</p>
+                                    <p class="education-end-title">Bitmə tarixi</p>
+                                </div>
+                                <div class="student-education-list">
+                                    <div class="student-education-item">
+                                        <p class="education-name">Bakı Dövlət Universiteti</p>
+                                        <p class="education-start-date">12/12/2024</p>
+                                        <p class="education-end-date">12/12/2024</p>
+                                    </div>
+                                    <div class="student-education-item">
+                                        <p class="education-name">Bakı Dövlət Universiteti</p>
+                                        <p class="education-start-date">12/12/2024</p>
+                                        <p class="education-end-date">12/12/2024</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="student-detail-jobBox">
+                                <h2 class="smallTitle">İş təcrübəsi</h2>
+                                <div class="job-list-titles">
+                                    <p class="job-title">İş yeri</p>
+                                    <p class="job-start-title">Başlama tarixi</p>
+                                    <p class="job-end-title">Bitmə tarixi</p>
+                                </div>
+                                <div class="student-job-list">
+                                    <div class="student-job-item">
+                                        <p class="job-name">Bakı Dövlət Universiteti</p>
+                                        <p class="job-start-date">12/12/2024</p>
+                                        <p class="job-end-date">12/12/2024</p>
+                                    </div>
+                                    <div class="student-job-item">
+                                        <p class="job-name">Bakı Dövlət Universiteti</p>
+                                        <p class="job-start-date">12/12/2024</p>
+                                        <p class="job-end-date">12/12/2024</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="student-documents-tabContent student-tabContent" data-id="studentDocumentsDetail">
+                            <div class="student-detail-documentBox">
+                                <h2 class="smallTitle">Tələbənin sənədləri</h2>
+                                <div class="document-list-titles">
+                                    <p class="document-date-title">Tarix</p>
+                                    <p class="document-type-title">Sənədin növü</p>
+                                    <p class="document-name-title">Sənəd</p>
+                                </div>
+                                <div class="student-document-list">
+                                    <div class="student-document-item">
+                                        <p class="document-date">12/12/2024</p>
+                                        <p class="document-type">CV</p>
+                                        <div class="document-name">
+                                            <p>Farhad-Rustamov-pfd</p>
+                                            <div class="documentBtns">
+                                                <a href="" class="documentBtn-view">
+                                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <g clip-path="url(#clip0_72_1979)">
+                                                        <path d="M2.7294 12.7464C2.02113 11.8262 1.66699 11.3661 1.66699 9.99998C1.66699 8.63383 2.02113 8.17375 2.7294 7.25359C4.14363 5.41628 6.51542 3.33331 10.0003 3.33331C13.4852 3.33331 15.857 5.41628 17.2712 7.25359C17.9795 8.17375 18.3337 8.63383 18.3337 9.99998C18.3337 11.3661 17.9795 11.8262 17.2712 12.7464C15.857 14.5837 13.4852 16.6666 10.0003 16.6666C6.51542 16.6666 4.14363 14.5837 2.7294 12.7464Z" stroke="black" stroke-opacity="0.9" stroke-width="1.5"/>
+                                                        <path d="M12.5 10C12.5 11.3807 11.3807 12.5 10 12.5C8.61929 12.5 7.5 11.3807 7.5 10C7.5 8.61929 8.61929 7.5 10 7.5C11.3807 7.5 12.5 8.61929 12.5 10Z" stroke="black" stroke-opacity="0.9" stroke-width="1.5"/>
+                                                        </g>
+                                                        <defs>
+                                                        <clipPath id="clip0_72_1979">
+                                                        <rect width="20" height="20" fill="white"/>
+                                                        </clipPath>
+                                                        </defs>
+                                                    </svg>                                                        
+                                                </a>
+                                                <button class="documentBtn-download">
+                                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M2.5 12.5C2.5 14.857 2.5 16.0355 3.23223 16.7678C3.96447 17.5 5.14298 17.5 7.5 17.5H12.5C14.857 17.5 16.0355 17.5 16.7678 16.7678C17.5 16.0355 17.5 14.857 17.5 12.5" stroke="black" stroke-opacity="0.9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                        <path d="M10.0003 2.49998V13.3333M10.0003 13.3333L13.3337 9.68748M10.0003 13.3333L6.66699 9.68748" stroke="black" stroke-opacity="0.9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                        </svg>                                                        
+                                                </button>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="student-document-item">
+                                        <p class="document-date">12/12/2024</p>
+                                        <p class="document-type">CV</p>
+                                        <div class="document-name">
+                                            <p>Farhad-Rustamov-pfd</p>
+                                            <div class="documentBtns">
+                                                <a href="" class="documentBtn-view">
+                                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <g clip-path="url(#clip0_72_1979)">
+                                                        <path d="M2.7294 12.7464C2.02113 11.8262 1.66699 11.3661 1.66699 9.99998C1.66699 8.63383 2.02113 8.17375 2.7294 7.25359C4.14363 5.41628 6.51542 3.33331 10.0003 3.33331C13.4852 3.33331 15.857 5.41628 17.2712 7.25359C17.9795 8.17375 18.3337 8.63383 18.3337 9.99998C18.3337 11.3661 17.9795 11.8262 17.2712 12.7464C15.857 14.5837 13.4852 16.6666 10.0003 16.6666C6.51542 16.6666 4.14363 14.5837 2.7294 12.7464Z" stroke="black" stroke-opacity="0.9" stroke-width="1.5"/>
+                                                        <path d="M12.5 10C12.5 11.3807 11.3807 12.5 10 12.5C8.61929 12.5 7.5 11.3807 7.5 10C7.5 8.61929 8.61929 7.5 10 7.5C11.3807 7.5 12.5 8.61929 12.5 10Z" stroke="black" stroke-opacity="0.9" stroke-width="1.5"/>
+                                                        </g>
+                                                        <defs>
+                                                        <clipPath id="clip0_72_1979">
+                                                        <rect width="20" height="20" fill="white"/>
+                                                        </clipPath>
+                                                        </defs>
+                                                    </svg>                                                        
+                                                </a>
+                                                <button class="documentBtn-download">
+                                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M2.5 12.5C2.5 14.857 2.5 16.0355 3.23223 16.7678C3.96447 17.5 5.14298 17.5 7.5 17.5H12.5C14.857 17.5 16.0355 17.5 16.7678 16.7678C17.5 16.0355 17.5 14.857 17.5 12.5" stroke="black" stroke-opacity="0.9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                        <path d="M10.0003 2.49998V13.3333M10.0003 13.3333L13.3337 9.68748M10.0003 13.3333L6.66699 9.68748" stroke="black" stroke-opacity="0.9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                        </svg>                                                        
+                                                </button>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="student-detail-contractBox">
+                                <h2 class="smallTitle">Müqavilə</h2>
+                                <div class="contract-list-titles">
+                                    <p class="contract-date-title">Tarix</p>
+                                    <p class="contract-type-title">Sənədin növü</p>
+                                    <p class="contract-name-title">Sənəd</p>
+                                </div>
+                                <div class="student-contract-list">
+                                    <div class="student-contract-item">
+                                        <p class="contract-date">12/12/2024</p>
+                                        <p class="contract-type">CV</p>
+                                        <div class="contract-name">
+                                            <p>Farhad-Rustamov-pfd</p>
+                                            <button class="contractBtn-download">
+                                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M2.5 12.5C2.5 14.857 2.5 16.0355 3.23223 16.7678C3.96447 17.5 5.14298 17.5 7.5 17.5H12.5C14.857 17.5 16.0355 17.5 16.7678 16.7678C17.5 16.0355 17.5 14.857 17.5 12.5" stroke="black" stroke-opacity="0.9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    <path d="M10.0003 2.49998V13.3333M10.0003 13.3333L13.3337 9.68748M10.0003 13.3333L6.66699 9.68748" stroke="black" stroke-opacity="0.9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    </svg>                                                        
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="student-services-tabContent student-tabContent" data-id="studentServicesDetail">
+                            <div class="student-detail-serviceBox">
+                                <h2 class="smallTitle">Tələbənin sənədləri</h2>
+                                <div class="service-list-titles">
+                                    <p class="service-type-title">Xidmət növü</p>
+                                    <p class="service-price-title">Məbləğ</p>
+                                </div>
+                                <div class="student-service-list">
+                                    <div class="student-service-item">
+                                        <select name="" id="">
+                                            <option value="">Telebe xidmet1</option>
+                                            <option value="">Telebe xidmet2</option>
+                                            <option value="">Telebe xidmet3</option>
+                                            <option value="">Telebe xidmet5</option>
+                                            <option value="">Telebe xidmet6</option>
+                                        </select>
+                                        <div class="servicePrice">
+                                            <input type="text" placeholder="0">
+                                            <span>AZN</span>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <script src="./assets/jquery-nice-select-1.1.0/js/jquery.js"></script>
+    <script src="./assets/jquery-nice-select-1.1.0/js/jquery.nice-select.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('select').niceSelect()
+        })
+    </script>
+    <script src="./assets/swiper/swiper.js"></script>
+    <script src="./assets/js/index.js"></script>
+</body>
+</html>

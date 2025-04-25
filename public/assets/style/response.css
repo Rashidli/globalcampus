@@ -1,0 +1,20 @@
+.success-message {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 10px 0;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+}
+.error-message {
+    background-color: #d4edda;
+    color: #571527;
+    border: 1px solid #c3e6cb;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 10px 0;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+}
