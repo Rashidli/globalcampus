@@ -131,7 +131,7 @@
                     </button>
                     <!-- hansina click etsen active gelecek o linke -->
                     <div class="menuDrop-links">
-                        <a href="users.html" class="block w-full px-3 py-2 rounded-lg border border-[rgba(0,0,0,0.03)] shadow-sm text-[15px] font-light leading-[22.5px] text-left text-[rgba(0,0,0,0.7)] hover:bg-gray-50 transition-colors duration-200">İstifadəçilər</a>
+                        <a href="{{route('users.index')}}" class="block w-full px-3 py-2 rounded-lg border border-[rgba(0,0,0,0.03)] shadow-sm text-[15px] font-light leading-[22.5px] text-left text-[rgba(0,0,0,0.7)] hover:bg-gray-50 transition-colors duration-200">İstifadəçilər</a>
                         @can('list-roles')
                             <a href="{{route('roles.index')}}" class="block w-full px-3 py-2 rounded-lg border border-[rgba(0,0,0,0.03)] shadow-sm text-[15px] font-light leading-[22.5px] text-left text-[rgba(0,0,0,0.7)] hover:bg-gray-50 transition-colors duration-200">Rollar</a>
                         @endcan
@@ -351,6 +351,8 @@
                         <a href="{{route('citizenships.index')}}" class="block w-full px-3 py-2 rounded-lg border border-[rgba(0,0,0,0.03)] shadow-sm text-[15px] font-light leading-[22.5px] text-left text-[rgba(0,0,0,0.7)] hover:bg-gray-50 transition-colors duration-200">Vətəndaşlıqlar</a>
                         <a href="{{route('exam_languages.index')}}" class="block w-full px-3 py-2 rounded-lg border border-[rgba(0,0,0,0.03)] shadow-sm text-[15px] font-light leading-[22.5px] text-left text-[rgba(0,0,0,0.7)] hover:bg-gray-50 transition-colors duration-200">İmtahan dilləri</a>
                         <a href="{{route('exams.index')}}" class="block w-full px-3 py-2 rounded-lg border border-[rgba(0,0,0,0.03)] shadow-sm text-[15px] font-light leading-[22.5px] text-left text-[rgba(0,0,0,0.7)] hover:bg-gray-50 transition-colors duration-200">İmtahanlar</a>
+                        <a href="{{route('university_education_levels.index')}}" class="block w-full px-3 py-2 rounded-lg border border-[rgba(0,0,0,0.03)] shadow-sm text-[15px] font-light leading-[22.5px] text-left text-[rgba(0,0,0,0.7)] hover:bg-gray-50 transition-colors duration-200">Universitet təhsil pillələri</a>
+                        <a href="{{route('university_school_types.index')}}" class="block w-full px-3 py-2 rounded-lg border border-[rgba(0,0,0,0.03)] shadow-sm text-[15px] font-light leading-[22.5px] text-left text-[rgba(0,0,0,0.7)] hover:bg-gray-50 transition-colors duration-200">Universitet məktəb növləri</a>
                     </div>
                 </div>
         </div>

@@ -3,36 +3,38 @@
 namespace App\Http\Controllers\Student;
 
 use App\Http\Controllers\Controller;
+use App\Http\Services\ActivityLogger;
 use App\Models\Document;
 use App\Models\Settings\EducationLevel;
 use App\Models\Settings\SettingDocument;
 use App\Models\User;
+use Exception;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
-use PhpOffice\PhpSpreadsheet\Writer\Ods\Settings;
-use PhpParser\Comment\Doc;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
+
 class DocumentController extends Controller
 {
     public function index($student_id)
     {
-        $user = User::query()->with('documents')->findOrFail($student_id);
-        $documents = $user->documents()->orderByDesc('id')->get();
+        $user             = User::query()->with('documents')->findOrFail($student_id);
+        $documents        = $user->documents()->orderByDesc('id')->get();
         $education_levels = EducationLevel::all();
+
         return view('students.documents.index', compact('documents', 'user', 'education_levels'));
     }
 
     public function create(Request $request)
     {
         $education_level = EducationLevel::query()->with('setting_documents')->findOrFail($request->education_level_id);
-        $user = User::query()->findOrFail($request->user_id);
+        $user            = User::query()->findOrFail($request->user_id);
+
         return view('students.documents.create', compact('education_level', 'user'));
     }
 
     public function fileUpload(Request $request)
     {
         try {
-
             foreach ($request->file('file') as $index => $uploadedFile) {
                 $title = $request->title[$index] ?? 'Sənəd';
 
@@ -40,14 +42,23 @@ class DocumentController extends Controller
 
                 $uploadedFile->move(public_path('files'), $filename);
 
-                Document::create([
-                    'user_id' => $request->user_id,
+                $document = Document::create([
+                    'user_id'    => $request->user_id,
                     'file_title' => $request->file_title,
-                    'title' => $title,
-                    'file' => $filename,
+                    'title'      => $title,
+                    'file'       => $filename,
                 ]);
+
+                ActivityLogger::log(
+                    eventType: 'store',
+                    loggable: $document,
+                    student_id: $document->user_id,
+                    customDescription: $title . ' adlı fayl əlavə edildi.'
+                );
             }
-        } catch (\Exception $exception) {
+
+            session()->flash('success', 'Fayllar uğurla əlavə edildi!');
+        } catch (Exception $exception) {
             return $exception->getMessage();
         }
 
@@ -56,15 +67,15 @@ class DocumentController extends Controller
 
     public function update(Request $request, $id)
     {
-        $document = Document::findOrFail($id);
-        $user = User::findOrFail($request->user_id);
-
+        $document  = Document::findOrFail($id);
+        $user      = User::findOrFail($request->user_id);
+        $oldData   = $document->toArray();
         $fileTitle = $request->file_title;
-        $title = $request->title;
+        $title     = $request->title;
 
         $data = [
             'file_title' => $fileTitle,
-            'title' => $title,
+            'title'      => $title,
         ];
 
         if ($request->hasFile('file')) {
@@ -83,21 +94,34 @@ class DocumentController extends Controller
         }
 
         $document->update($data);
+        $newData     = $document->fresh()->toArray();
+        $changedData = array_diff_assoc($newData, $oldData);
+        unset($changedData['updated_at']);
 
-        return redirect()->route('documents.index', $request->user_id)
-            ->with('message', 'Fayl uğurla dəyişdirildi');
+        ActivityLogger::log(
+            eventType: 'update',
+            loggable: $document,
+            student_id: $user->id,
+            oldData: $oldData,
+            newData: $newData,
+            changedData: $changedData,
+            customDescription: $document->title . ' faylında dəyişiklik olundu.'
+        );
+
+        session()->flash('success', 'Fayl uğurla yeniləndi.');
+
+        return redirect()->route('documents.index', $request->user_id);
     }
 
     public function edit($id)
     {
-
-        $document = Document::query()->findOrFail($id);
-        $user = User::query()->findOrFail($document->user_id);
-        $education_levels = EducationLevel::all();
+        $document           = Document::query()->findOrFail($id);
+        $user               = User::query()->findOrFail($document->user_id);
+        $education_levels   = EducationLevel::all();
         $education_level_id = EducationLevel::query()->where('title', $document->file_title)->first();
-        $setting_documents = SettingDocument::query()->where('education_level_id', $education_level_id->id)->get();
-        return view('students.documents.edit', compact('document', 'user', 'education_levels', 'setting_documents'));
+        $setting_documents  = SettingDocument::query()->where('education_level_id', $education_level_id->id)->get();
 
+        return view('students.documents.edit', compact('document', 'user', 'education_levels', 'setting_documents'));
     }
 
     public function deleteFile(Request $request, $id)
@@ -111,7 +135,15 @@ class DocumentController extends Controller
         }
 
         $document->delete();
+        session()->flash('success', 'Fayl uğurla silindi.');
 
-        return redirect()->route('documents.index', $document->user_id)->with('message', 'Fayl uğurla silindi');
+        ActivityLogger::log(
+            eventType: 'destroy',
+            loggable: $document,
+            student_id: $document->user_id,
+            customDescription: $document->title . ' adlı fayl silindi.'
+        );
+
+        return redirect()->route('documents.index', $document->user_id);
     }
 }

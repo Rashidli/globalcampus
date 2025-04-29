@@ -8,15 +8,15 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class SchoolType extends Model
+class UniversitySchoolType extends Model
 {
     use SoftDeletes;
 
     protected $guarded = [];
 
-    public function education_level(): BelongsTo
+    public function university_education_level(): BelongsTo
     {
-        return $this->belongsTo(EducationLevel::class);
+        return $this->belongsTo(UniversityEducationLevel::class);
     }
 
     public function universities(): HasMany

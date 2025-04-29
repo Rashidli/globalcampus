@@ -87,7 +87,7 @@
                     <td class="px-6 py-4 text-center">{{$user->students_count}}</td>
                     <td class=" px-6 py-4 ">
                         <div class="agent_icons flex justify-center gap-4 items-center text-center">
-                            <a href="{{ route('students.index', ['agent_id' => $user->id]) }}">
+                            <a href="{{ route('students.index', ['agent_id[]' => $user->id]) }}">
                                 <img src="{{ asset('/') }}assets/images/eye.svg" alt="">
                             </a>
                             <a href="{{route('agents.edit', $user->id)}}">

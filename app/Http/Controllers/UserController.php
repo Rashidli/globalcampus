@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\UserType;
 use App\Http\Requests\RegisterRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -13,8 +14,8 @@ class UserController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('permission:list-users|create-users|edit-users|delete-users', ['only' => ['index','show']]);
-        $this->middleware('permission:create-users', ['only' => ['create','store']]);
+        $this->middleware('permission:list-users|create-users|edit-users|delete-users', ['only' => ['index', 'show']]);
+        $this->middleware('permission:create-users', ['only' => ['create', 'store']]);
         $this->middleware('permission:edit-users', ['only' => ['edit']]);
         $this->middleware('permission:delete-users', ['only' => ['destroy']]);
     }
@@ -22,88 +23,69 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      */
-
     public function index()
     {
-        $users = User::query()->where('type','user')->get();
-        return view('users.index',compact('users'));
+        $users = User::query()->with('roles')->where('type', UserType::USER)->get();
+
+        return view('users.index', compact('users'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-
     public function create()
     {
         $roles = Role::all();
+
         return view('users.create', compact('roles'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-
     public function store(RegisterRequest $request)
     {
-
         $user = new User([
-            'name' => $request->input('name'),
-            'email' => $request->input('email'),
+            'name'     => $request->input('name'),
+            'email'    => $request->input('email'),
+            'type'     => UserType::USER,
             'password' => Hash::make($request->input('password')),
         ]);
 
         $user->assignRole($request->role);
 
-//        if($request->role){
-//            foreach ($request->role as $r){
-//                $user->assignRole($r);
-//            }
-//        }
-
-
         $user->save();
-
-//        Auth::login($user);
-
+        session()->flash('success', "{$user->name} əlavə olundu.");
         return redirect()->route('users.index')->with('message', 'İstifadəçi əlavə edildi');
-
     }
 
     /**
      * Display the specified resource.
      */
-
-    public function show(string $id)
-    {
-        //
-    }
+    public function show(string $id): void {}
 
     /**
      * Show the form for editing the specified resource.
      */
-
     public function edit(User $user)
     {
-
         $roles = Role::all();
-        return view('admin.users.edit', compact('user','roles'));
 
+        return view('users.edit', compact('user', 'roles'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-
     public function update(Request $request, User $user)
     {
-
         $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email,' . $user->id,
+            'name'     => 'required|string|max:255',
+            'email'    => 'required|email|unique:users,email,' . $user->id,
             'password' => 'nullable|string|min:8',
         ]);
 
-        $user->name = $request->input('name');
+        $user->name  = $request->input('name');
         $user->email = $request->input('email');
 
         if ($request->password) {
@@ -113,32 +95,20 @@ class UserController extends Controller
         $user->syncRoles();
         $user->assignRole($request->role);
 
-//        if($request->role){
-//            $user->syncRoles();
-//
-//            foreach ($request->role as $p){
-//                $user->assignRole($p);
-//            }
-//        }
-
         $user->save();
+        session()->flash('success', "{$user->name} dəyişdirildi.");
 
-        return redirect()->back()->with('message','İstifadəçi update edildi');
-
+        return redirect()->back()->with('message', 'İstifadəçi update edildi');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-
     public function destroy(User $user)
     {
-        if($user->id == 3){
-            return redirect()->route('users.index')->with('message','Admini silmək olmaz');
-        }
-
         $user->delete();
-        return redirect()->route('users.index')->with('message','İstifadəçi silindi');
+
+        return redirect()->route('users.index')->with('message', 'İstifadəçi silindi');
     }
 
     public function login()
@@ -155,7 +125,7 @@ class UserController extends Controller
         $user = auth()->user();
 
         if ($request->hasFile('image')) {
-            $file = $request->file('image');
+            $file     = $request->file('image');
             $filename = Str::uuid() . '.' . $file->getClientOriginalExtension();
 
             $file->move(public_path('files'), $filename);
@@ -170,7 +140,4 @@ class UserController extends Controller
 
         return redirect()->back()->with('message', 'Şəkil uğurla yükləndi!');
     }
-
-
-
 }

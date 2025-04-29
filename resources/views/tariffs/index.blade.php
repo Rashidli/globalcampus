@@ -15,15 +15,7 @@
 
     <div class="universities-container">
        <div class="flex justify-between items-center">
-           <div class="university-tabs">
-               <a href="{{route('tariffs.index')}}"
-                  class="university-tab-btn active"
-               >Universitet
-               </a>
-               <a href="{{route('universities.index')}}" class="university-tab-btn"
-                  id="university_info">Məlumat
-               </a>
-           </div>
+           @include('partials.university-tabs')
            @can('create-universities')
                <a href="{{route('tariffs.create')}}" class="addNewPermission !mt-0">
                    <img src="{{asset('/')}}assets/images/plus.svg" alt="">

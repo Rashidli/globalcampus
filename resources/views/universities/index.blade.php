@@ -14,33 +14,39 @@
 
     <div class="universities-container">
         <div class="university-tabs">
-            <a href="{{route('tariffs.index')}}"
-               class="university-tab-btn ">Universitet
+            <a href="{{ route('tariffs.index') }}"
+               class="university-tab-btn {{ request()->routeIs('tariffs.index') ? 'active' : '' }}">
+                Axtar
             </a>
-            <a href="{{route('universities.index')}}"  class="university-tab-btn active"
-               id="university_info">Məlumat
-            </a>
+
+            @foreach($university_education_levels as $university_education_level)
+                <a href="{{ route('universities.index', ['education_id' => $university_education_level->id]) }}"
+                   class="university-tab-btn {{ request('education_id') == $university_education_level->id ? 'active' : '' }}">
+                    {{ $university_education_level->title }}
+                </a>
+            @endforeach
         </div>
+
         <div
             class="university-tab-content universities-main">
 
             <div class="universities-level-tabs">
-                @foreach($education_levels as $key => $education_level)
+                @foreach($university_education_levels as $key => $university_education_level)
                     <button class="level-tab @if(!$key) active @endif" type="button"
-                            id="level_{{$education_level->id}}">
+                            id="level_{{$university_education_level->id}}">
                         <img src="{{asset('/')}}assets/images/cap.svg" alt="">
-                        {{$education_level->title}}
+                        {{$university_education_level->title}}
                     </button>
                 @endforeach
 
             </div>
-            @foreach($education_levels as $key => $education_level)
+            @foreach($university_education_levels as $key => $university_education_level)
                 <div class="level-tabContent level_bachelor_content @if(!$key) activeLevelContent @endif"
-                     data-id="level_{{$education_level->id}}">
+                     data-id="level_{{$university_education_level->id}}">
                     <div class="level_bachelor_tabs">
-                        @foreach($education_level->school_types ?? [] as $keys => $school_type)
+                        @foreach($university_education_level->university_school_types ?? [] as $keys => $university_school_type)
                             <button class="level_bachelor_tab @if(!$keys) active @endif"
-                                    id="bachelor_{{$school_type->id}}">{{$school_type->title}}</button>
+                                    id="bachelor_{{$university_school_type->id}}">{{$university_school_type->title}}</button>
                         @endforeach
                     </div>
                     <div class="universities-area">
@@ -49,10 +55,10 @@
                             <p class="universitName">Universitet adı</p>
                         </div>
                         <div class="universities_lists_area">
-                            @foreach($education_level->school_types ?? [] as $keyss => $school_type)
+                            @foreach($university_education_level->university_school_types ?? [] as $keyss => $university_school_type)
                                 <div class="bachelor_universities_lists @if(!$keyss) active @endif"
-                                     data-id="bachelor_{{$school_type->id}}">
-                                    @foreach($school_type->universities ?? [] as $keysss => $university)
+                                     data-id="bachelor_{{$university_school_type->id}}">
+                                    @foreach($university_school_type->universities ?? [] as $keysss => $university)
                                         <div class="universities_lists_item">
                                             <p class="universityNumber">{{$keysss + 1}}</p>
                                             <p class="universitName">{{$university->title}}</p>
@@ -87,7 +93,6 @@
                             @endforeach
                         </div>
 
-                    </div>
                 </div>
             @endforeach
         </div>
@@ -109,17 +114,17 @@
                 <div class="form-items" style="display: flex; flex-direction: column">
                     <div class="form-item">
                         <label for="">Təhsil pilləsi</label>
-                        <select name="education_level_id" id="education_level_select" style="width: 100% !important;">
+                        <select name="university_education_level_id" id="university_education_level_select" style="width: 100% !important;">
                             <option value="">Seçin</option>
-                            @foreach($education_levels as $education_level)
-                                <option value="{{ $education_level->id }}">{{ $education_level->title }}</option>
+                            @foreach($university_education_levels as $university_education_level)
+                                <option value="{{ $university_education_level->id }}">{{ $university_education_level->title }}</option>
                             @endforeach
                         </select>
                     </div>
 
                     <div class="form-item">
                         <label for="">Məktəb növü</label>
-                        <select name="school_type_id" id="school_type_select" style="width: 100% !important;">
+                        <select name="university_school_type_id" id="university_school_type_select" style="width: 100% !important;">
                             <option value="">Seçin</option>
                         </select>
                     </div>
@@ -155,9 +160,9 @@
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script>
     $(document).ready(function () {
-        $("#education_level_select").on("change", function () {
+        $("#university_education_level_select").on("change", function () {
             let educationLevelId = $(this).val();
-            let schoolTypeSelect = $("#school_type_select");
+            let schoolTypeSelect = $("#university_school_type_select");
 
             // Clear previous options
             schoolTypeSelect.html('<option value="">Seçin</option>');
@@ -210,8 +215,8 @@
                     response.forEach(function (type) {
                         schoolTypesDiv.append(`
                             <div class="check-item">
-                                <input type="radio" id="school_type_${type.id}" name="school_type_id" value="${type.id}">
-                                <label for="school_type_${type.id}">${type.title}</label>
+                                <input type="radio" id="university_school_type_${type.id}" name="university_school_type_id" value="${type.id}">
+                                <label for="university_school_type_${type.id}">${type.title}</label>
                             </div>
                         `);
                     });

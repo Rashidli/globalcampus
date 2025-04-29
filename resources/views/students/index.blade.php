@@ -101,6 +101,7 @@
                     </button>
                     <p class="resultCount"><span>{{$count}}</span> Nəticə</p>
                 </div>
+
             </div>
         </form>
     </div>
@@ -232,6 +233,7 @@
                 let educationLevelId = $(this).val();
                 loadDropdowns(educationLevelId, "", []);
             });
+
         });
     </script>
 @endpush

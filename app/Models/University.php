@@ -11,27 +11,25 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class University extends Model
 {
-
     protected $guarded = [];
 
-    public function school_type() : BelongsTo
+    public function school_type(): BelongsTo
     {
         return $this->belongsTo(SchoolType::class);
     }
 
-    public function education_level() : BelongsTo
+    public function education_level(): BelongsTo
     {
         return $this->belongsTo(EducationLevel::class);
     }
 
-    public function education_language() : BelongsTo
+    public function education_language(): BelongsTo
     {
         return $this->belongsTo(EducationLanguage::class);
     }
 
-    public function profession() : BelongsTo
+    public function profession(): BelongsTo
     {
         return $this->belongsTo(Profession::class);
     }
-
 }
