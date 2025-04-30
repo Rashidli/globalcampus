@@ -37,6 +37,7 @@ use App\Http\Controllers\UserController;
 use App\Models\Settings\ExamLanguage;
 use App\Models\Settings\Profession;
 use App\Models\Settings\SchoolType;
+use App\Models\Settings\UniversitySchoolType;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/login', [AuthController::class, 'login'])->name('login');
@@ -147,6 +148,11 @@ Route::group(['middleware' => 'auth'], function (): void {
             'schoolTypes' => $schoolTypes,
             'professions' => $professions,
         ]);
+    });
+    Route::get('/university-get-school-types/{education_level_id}', function ($education_level_id) {
+        $schoolTypes = UniversitySchoolType::query()->where('university_education_level_id', $education_level_id)->get();
+
+        return response()->json($schoolTypes);
     });
     Route::get('/api/exams/by-education/{id}', function ($id) {
         $exam_language = ExamLanguage::with('exams')->find($id);

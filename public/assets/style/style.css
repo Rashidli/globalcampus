@@ -10239,3 +10239,206 @@ button {
     width: 20px;
     height: 20px;
 }
+
+.universities-edit-modal-container {
+    background: rgba(0, 0, 0, 0.12);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    width: 100%;
+    height: 100%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+.universities-edit-modal-container .universities-modal {
+    display: flex;
+    flex-direction: column;
+    background: #FFFFFF;
+    padding: 40px 28px;
+    border-radius: 12px;
+    max-width: 618px;
+    width: 100%;
+    position: relative;
+}
+.universities-edit-modal-container .universities-modal .universities-modal-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.universities-edit-modal-container .universities-modal .universities-modal-head h2 {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 32px;
+    text-align: left;
+    color: #000;
+}
+.universities-edit-modal-container .universities-modal .universities-modal-head .close-universities-modal {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+}
+.universities-edit-modal-container .universities-modal .universities-modal-head .close-universities-modal svg {
+    width: 100%;
+    height: 100%;
+}
+.universities-edit-modal-container .universities-modal .form-add-universities-modal {
+    width: 100%;
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 28px;
+}
+.universities-edit-modal-container .universities-modal .form-add-universities-modal .form-items {
+    display: flex;
+    width: 100%;
+    gap: 12px;
+    align-items: center;
+}
+.universities-edit-modal-container .universities-modal .form-add-universities-modal .form-items .form-item {
+    max-width: 350px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 8px;
+}
+.universities-edit-modal-container .universities-modal .form-add-universities-modal .form-items .form-item label {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 18px;
+    text-align: left;
+    color: rgba(0, 0, 0, 0.6);
+}
+.universities-edit-modal-container .universities-modal .form-add-universities-modal .form-items .form-item label sup {
+    color: #FF1346;
+}
+.universities-edit-modal-container .universities-modal .form-add-universities-modal .form-items .form-item input {
+    width: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    background: #F9F9F9;
+    border-radius: 12px;
+    outline: none;
+    padding: 14px 16px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    text-align: left;
+    color: #000;
+}
+.universities-edit-modal-container .universities-modal .form-add-universities-modal .form-items .form-item input::-moz-placeholder {
+    color: rgba(0, 0, 0, 0.6);
+}
+.universities-edit-modal-container .universities-modal .form-add-universities-modal .form-items .form-item input::placeholder {
+    color: rgba(0, 0, 0, 0.6);
+}
+.universities-edit-modal-container .universities-modal .form-add-universities-modal .form-items .document-input-box {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    width: 100%;
+    gap: 8px;
+    max-width: 200px;
+}
+.universities-edit-modal-container .universities-modal .form-add-universities-modal .form-items .document-input-box .document-input-box-top {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+.universities-edit-modal-container .universities-modal .form-add-universities-modal .form-items .document-input-box .document-input-box-top label {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 18px;
+    text-align: left;
+    color: rgba(0, 0, 0, 0.6);
+}
+.universities-edit-modal-container .universities-modal .form-add-universities-modal .form-items .document-input-box .document-input-box-top label sup {
+    color: #FF1346;
+}
+.universities-edit-modal-container .universities-modal .form-add-universities-modal .form-items .document-input-box .document-input-box-top .resetDocumentBox {
+    width: 16px;
+    min-width: 16px;
+    height: 16px;
+    display: none;
+}
+.universities-edit-modal-container .universities-modal .form-add-universities-modal .form-items .document-input-box .document-input-item {
+    width: 100%;
+    position: relative;
+    padding: 14px;
+    border-radius: 12px;
+    background: #EEF1FC;
+    border: 1px dashed rgba(22, 97, 195, 0.4);
+    cursor: pointer;
+    height: 48px;
+    min-height: 48px;
+}
+.universities-edit-modal-container .universities-modal .form-add-universities-modal .form-items .document-input-box .document-input-item input {
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    border-radius: 12px;
+    opacity: 0;
+}
+.universities-edit-modal-container .universities-modal .form-add-universities-modal .form-items .document-input-box .document-input-item p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    color: #000;
+}
+.universities-edit-modal-container .universities-modal .form-add-universities-modal .form-items .document-input-box .document-input-item p svg {
+    min-width: 20px;
+    width: 20px;
+    height: 20px;
+}
+.universities-edit-modal-container .universities-modal .form-add-universities-modal .form-items .document-input-box .document-input-item .fileName {
+    display: none;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    color: rgba(0, 0, 0, 0.6);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.universities-edit-modal-container .universities-modal .form-add-universities-modal .form-items .added-file .document-input-box-top .resetDocumentBox {
+    display: block;
+}
+.universities-edit-modal-container .universities-modal .form-add-universities-modal .form-items .added-file .document-input-item {
+    background: #F5F5F5;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+}
+.universities-edit-modal-container .universities-modal .form-add-universities-modal .form-items .added-file .document-input-item p {
+    display: none;
+}
+.universities-edit-modal-container .universities-modal .form-add-universities-modal .form-items .added-file .document-input-item .fileName {
+    display: block;
+}
+.universities-edit-modal-container .universities-modal .form-add-universities-modal .add-universities-modalBtn {
+    padding: 10px 20px;
+    border-radius: 12px;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    background: #1661C3;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 22.5px;
+    width: -moz-max-content;
+    width: max-content;
+}

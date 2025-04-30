@@ -20,13 +20,16 @@ class UniversityController extends Controller
 
     public function index(Request $request)
     {
-        $universities = University::query()->where('university_education_level_id', $request->education_id)->get();
+        $university_school_types = UniversitySchoolType::query()
+            ->with('universities')
+            ->where('university_education_level_id', $request->education_id)
+            ->get();
 
-        $university_school_types     = UniversitySchoolType::all();
-        $university_education_levels = UniversityEducationLevel::with('university_school_types')->get();
+        $university_education_levels = UniversityEducationLevel::query()
+            ->with('university_school_types')
+            ->get();
 
         return view('universities.index', compact(
-            'universities',
             'university_school_types',
             'university_education_levels',
         ));
@@ -72,8 +75,9 @@ class UniversityController extends Controller
             'university_school_type_id'     => $request->university_school_type_id,
             'file'                          => $filename ?? null,
         ]);
+        session()->flash('success', 'Yeni universitet əlavə olundu.');
 
-        return redirect()->route('universities.index', ['tab_type' => $request->tab_type])->with('message', 'Yeni umiversitet əlavə olundu.');
+        return redirect()->back();
     }
 
     /**
@@ -125,8 +129,8 @@ class UniversityController extends Controller
             'university_education_level_id' => $request->university_education_level_id,
             'university_school_type_id'     => $request->university_school_type_id,
         ]);
-
-        return redirect()->route('universities.index')->with('message', 'Mövcud universitet dəyişdirildi.');
+        session()->flash('success', 'Mövcud universitet dəyişdirildi.');
+        return redirect()->back();
     }
 
     /**
@@ -135,8 +139,8 @@ class UniversityController extends Controller
     public function destroy(University $university)
     {
         $university->delete();
-
-        return redirect()->route('universities.index')->with('message', 'Universitet silindi.');
+        session()->flash('success', 'Universitet silindi.');
+        return redirect()->back();
     }
 
     public function university()

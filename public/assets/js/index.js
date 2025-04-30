@@ -391,6 +391,10 @@ const universities_modal_container = document.querySelector(".universities-modal
 const close_universities_modal = document.querySelector(".close-universities-modal");
 const addNewUniversitys = document.querySelectorAll(".addNewUniversity");
 
+const universities1_modal_container = document.querySelector(".universities-edit-modal-container");
+const close_universities1_modal = document.querySelector(".close-universities-modal");
+const addNewUniversitys1 = document.querySelectorAll(".addNewUniversity");
+
 close_universities_modal?.addEventListener("click",()=>{
   universities_modal_container.style.display="none"
 })
