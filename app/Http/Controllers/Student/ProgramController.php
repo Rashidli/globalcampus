@@ -50,14 +50,7 @@ class ProgramController extends Controller
     {
         $user = User::query()->with('programs')->findOrFail($student_id);
 
-        $program = $user->programs()->create($request->all());
-
-        ActivityLogger::log(
-            eventType: 'store',
-            loggable: $program,
-            student_id: $user->id,
-            customDescription: 'yeni proqram əlavə olundu.'
-        );
+        $user->programs()->create($request->all());
 
         session()->flash('success', 'Program uğurla əlavə olundu.!');
 
@@ -81,21 +74,7 @@ class ProgramController extends Controller
     public function update(Request $request, $id)
     {
         $program = Program::findOrFail($id);
-        $oldData = $program->toArray();
         $program->update($request->all());
-        $newData     = $program->fresh()->toArray();
-        $changedData = array_diff_assoc($newData, $oldData);
-        unset($changedData['updated_at']);
-
-        ActivityLogger::log(
-            eventType: 'update',
-            loggable: $program,
-            student_id: $program->user_id,
-            oldData: $oldData,
-            newData: $newData,
-            changedData: $changedData,
-            customDescription: 'proqram məlumatlarında dəyişiklik olundu.'
-        );
 
         session()->flash('success', 'Program uğurla yeniləndi.');
 
@@ -125,13 +104,6 @@ class ProgramController extends Controller
         $program->delete();
         session()->flash('success', 'Proqram silindi.');
 
-        ActivityLogger::log(
-            eventType: 'destroy',
-            loggable: $program,
-            student_id: $program->user_id,
-            customDescription: 'program silindi.'
-        );
-
-        return redirect()->route('programs.index', $program->user_id)->with('message', 'Program silindi');
+        return redirect()->route('programs.index', $program->user_id);
     }
 }
