@@ -22,6 +22,11 @@
                     @if($errors->first('name')) <small class="form-text text-danger">{{$errors->first('name')}}</small>@endif
                 </div>
                 <div class="form-item">
+                    <label for="">Soyad</label>
+                    <input type="text" placeholder="Soyad" name="surname" value="{{$user->surname}}">
+                    @if($errors->first('surname')) <small class="form-text text-danger">{{$errors->first('surname')}}</small>@endif
+                </div>
+                <div class="form-item">
                     <label for="">Email</label>
                     <input type="email" placeholder="Email" name="email" value="{{$user->email}}">
                     @if($errors->first('email')) <small class="form-text text-danger">{{$errors->first('email')}}</small>@endif
@@ -33,7 +38,8 @@
                 </div>
                 <div class="form-item">
                     <label for="">Rol</label>
-                    <select name="user" class="border border-gray-300 rounded-lg p-2 w-full dark:border-gray-600 dark:bg-gray-700 dark:text-white">
+                    <select name="role" class="border border-gray-300 rounded-lg p-2 w-full dark:border-gray-600 dark:bg-gray-700 dark:text-white">
+                        <option value="" >Seçin</option>
                         @foreach ($roles as $role)
                             <option value="{{$role->id}}" {{ $user->roles->contains('id', $role->id) ? 'selected' : '' }}>{{$role->name}}</option>
                         @endforeach

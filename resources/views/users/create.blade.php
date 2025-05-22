@@ -21,6 +21,10 @@
                     <input type="text" placeholder="Ad" name="name" value="{{old('name')}}">
                     @if($errors->first('name')) <small class="form-text text-danger">{{$errors->first('name')}}</small>@endif
                 </div>
+                    <label for="">Soyad</label>
+                    <input type="text" placeholder="Soyad" name="surname" value="{{old('surname')}}">
+                    @if($errors->first('surname')) <small class="form-text text-danger">{{$errors->first('surname')}}</small>@endif
+                </div>
                 <div class="form-item">
                     <label for="">Email</label>
                     <input type="email" placeholder="Email" name="email" value="{{old('email')}}">
