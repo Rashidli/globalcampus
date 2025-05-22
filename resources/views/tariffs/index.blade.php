@@ -1,10 +1,6 @@
 @extends('layouts.master')
 @section('title', 'Universitetlər')
-<style>
-    .nice-select {
-        width: 100% !important;
-    }
-</style>
+
 @section('content')
 
     @if(session('message'))

@@ -25,7 +25,8 @@
         </div>
         <div class="navbar-menu-links">
             @if(auth()->user()->hasRole('Student'))
-
+{{--                 permissionlar əlavə edildikdən sonra bu route aşağıdakı kimi dəyişdirilib single_student bladesi və route silinsin--}}
+{{--                {{route('students.show',auth()->user()->id)}} --}}
                 <a href="{{route('single_student')}}" class="navbar-menu-link {{ request()->routeIs('single_student') ? 'active' : '' }}">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <circle cx="12" cy="6" r="4" fill="black"></circle>

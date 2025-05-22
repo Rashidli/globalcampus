@@ -26,8 +26,7 @@ class ApplicationController extends Controller
 
         return Program::query()->whereHas('user')
             ->filterByUser($user)
-            ->when($request->filled('name'), fn ($q) => $q->filterByName($request->name))
-            ->when($request->filled('surname'), fn ($q) => $q->filterBySurname($request->surname))
+            ->when($request->filled('user_id'), fn ($q) => $q->FilterByStudent($request->user_id))
             ->when($request->filled('agent_id'), fn ($q) => $q->filterByAgentIds($request->agent_id))
             ->when($request->filled('university_list_id'), fn ($q) => $q->filterByUniversity($request->university_list_id))
             ->when($request->filled('period_id'), fn ($q) => $q->filterByPeriod($request->period_id))
@@ -53,6 +52,7 @@ class ApplicationController extends Controller
             $periods             = Period::all();
             $program_statuses    = ProgramStatus::all();
             $agents              = User::query()->where('type', UserType::AGENT)->get();
+            $users               = User::query()->where('type', UserType::STUDENT)->orderByDesc('id')->get();
 
             return view('applications.index', compact(
                 'applications',
@@ -63,7 +63,8 @@ class ApplicationController extends Controller
                 'school_types',
                 'university_lists',
                 'countries',
-                'agents'
+                'agents',
+                'users'
             ));
         } catch (Exception $exception) {
             return $exception->getMessage();

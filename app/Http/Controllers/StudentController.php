@@ -31,8 +31,7 @@ class StudentController extends Controller
     {
         //        dd($request->all());
         return $query
-            ->when($request->filled('name'), fn ($q) => $q->where('name', 'like', '%' . $request->name . '%'))
-            ->when($request->filled('surname'), fn ($q) => $q->where('surname', 'like', '%' . $request->surname . '%'))
+            ->when($request->filled('user_id'), fn ($q) => $q->whereIn('id', $request->user_id))
             ->when(
                 $request->filled('agent_id'),
                 fn ($q) => $q->whereIn('agent_id', $request->agent_id)
@@ -94,6 +93,7 @@ class StudentController extends Controller
         $education_levels = EducationLevel::with('school_types')->get();
         $professions      = Profession::all();
         $university_lists = UniversityList::all();
+        $students         = User::query()->where('type', UserType::STUDENT)->orderByDesc('id')->get();
 
         return view('students.index', compact(
             'users',
@@ -102,7 +102,8 @@ class StudentController extends Controller
             'education_levels',
             'professions',
             'university_lists',
-            'count'
+            'count',
+            'students'
         ));
     }
 
@@ -130,12 +131,11 @@ class StudentController extends Controller
         )
             ->findOrFail($id);
 
-        $services  = Service::all();
-        $isStudent = $user->hasRole('Student');
+        $services = Service::all();
 
         $education_levels = EducationLevel::query()->with('setting_documents')->get();
 
-        return view('students.show', compact('user', 'services', 'isStudent', 'education_levels'));
+        return view('students.show', compact('user', 'services', 'education_levels'));
     }
 
     public function single_student()

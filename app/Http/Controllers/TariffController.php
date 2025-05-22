@@ -115,7 +115,7 @@ class TariffController extends Controller
         $university_lists    = UniversityList::all();
         $countries           = Country::all();
         $currencies          = Currency::all();
-        $education_costs     = EducationCost::all();
+        $education_costs     = EducationCost::query()->orderByDesc('title')->get();
 
         return view('tariffs.create', compact(
             'education_languages',

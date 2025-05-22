@@ -15,16 +15,28 @@
 
             <div class="grid grid-cols-1 items-start md:grid-cols-2 lg:grid-cols-5 gap-4 bg-white p-4 rounded-lg shadow-md dark:bg-gray-800">
 
-                <div class="flex flex-col">
-                    <label for="name" class="text-sm font-medium text-gray-700 dark:text-white">Ad</label>
-                    <input type="text" name="name" id="name" placeholder="Ad" value="{{request('name')}}"
-                           class="border border-gray-300 rounded-lg p-2 w-full dark:border-gray-600 dark:bg-gray-700 dark:text-white">
-                </div>
+{{--                <div class="flex flex-col">--}}
+{{--                    <label for="name" class="text-sm font-medium text-gray-700 dark:text-white">Ad</label>--}}
+{{--                    <input type="text" name="name" id="name" placeholder="Ad" value="{{request('name')}}"--}}
+{{--                           class="border border-gray-300 rounded-lg p-2 w-full dark:border-gray-600 dark:bg-gray-700 dark:text-white">--}}
+{{--                </div>--}}
 
-                <div class="flex flex-col">
-                    <label for="surname" class="text-sm font-medium text-gray-700 dark:text-white">Soyad</label>
-                    <input type="text" name="surname" id="surname" placeholder="Soyad" value="{{request('surname')}}"
-                           class="border border-gray-300 rounded-lg p-2 w-full dark:border-gray-600 dark:bg-gray-700 dark:text-white">
+{{--                <div class="flex flex-col">--}}
+{{--                    <label for="surname" class="text-sm font-medium text-gray-700 dark:text-white">Soyad</label>--}}
+{{--                    <input type="text" name="surname" id="surname" placeholder="Soyad" value="{{request('surname')}}"--}}
+{{--                           class="border border-gray-300 rounded-lg p-2 w-full dark:border-gray-600 dark:bg-gray-700 dark:text-white">--}}
+{{--                </div>--}}
+
+                <div>
+                    <label for="user_id" class="block text-sm font-medium text-gray-700 dark:text-white">Tələbə seçin</label>
+                    <select name="user_id[]" multiple id="user_id"
+                            class="select2 border border-gray-300 rounded-lg p-2 w-full dark:border-gray-600 dark:bg-gray-700 dark:text-white mt-1">
+                        @foreach($students as $item)
+                            <option value="{{ $item->id }}" {{ collect(request('user_id'))->contains($item->id) ? 'selected' : '' }}>
+                                {{ $item->name . ' '. $item->surname }}
+                            </option>
+                        @endforeach
+                    </select>
                 </div>
 
                 <div class="flex flex-col">
@@ -101,7 +113,6 @@
                     </button>
                     <p class="resultCount"><span>{{$count}}</span> Nəticə</p>
                 </div>
-
             </div>
         </form>
     </div>
@@ -233,7 +244,6 @@
                 let educationLevelId = $(this).val();
                 loadDropdowns(educationLevelId, "", []);
             });
-
         });
     </script>
 @endpush

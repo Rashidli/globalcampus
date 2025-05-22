@@ -113,14 +113,9 @@ class Program extends Model
         return $query;
     }
 
-    public function scopeFilterByName($query, $name)
+    public function scopeFilterByStudent($query, $user_ids)
     {
-        return $query->whereHas('user', fn ($q) => $q->where('name', 'like', "%{$name}%"));
-    }
-
-    public function scopeFilterBySurname($query, $surname)
-    {
-        return $query->whereHas('user', fn ($q) => $q->where('surname', 'like', "%{$surname}%"));
+        return $query->whereIn('user_id', $user_ids);
     }
 
     public function scopeFilterByAgentIds($query, $agentIds)

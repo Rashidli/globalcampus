@@ -7,19 +7,33 @@
         <form action="{{ route('applications.index') }}" method="get" style="width: 100%">
 
             <div class="grid grid-cols-1 items-start md:grid-cols-2 lg:grid-cols-5 gap-4 bg-white p-4 rounded-lg shadow-md dark:bg-gray-800">
-                <!-- Ad Input with Label -->
+
+{{--                <!-- Ad Input with Label -->--}}
+{{--                <div>--}}
+{{--                    <label for="name" class="block text-sm font-medium text-gray-700 dark:text-white">Ad</label>--}}
+{{--                    <input type="text" id="name" name="name" placeholder="Ad" value="{{ request('name') }}"--}}
+{{--                           class="border border-gray-300 rounded-lg p-2 w-full dark:border-gray-600 dark:bg-gray-700 dark:text-white mt-1">--}}
+{{--                </div>--}}
+
+{{--                <!-- Soyad Input with Label -->--}}
+{{--                <div>--}}
+{{--                    <label for="surname" class="block text-sm font-medium text-gray-700 dark:text-white">Soyad</label>--}}
+{{--                    <input type="text" id="surname" name="surname" placeholder="Soyad" value="{{ request('surname') }}"--}}
+{{--                           class="border border-gray-300 rounded-lg p-2 w-full dark:border-gray-600 dark:bg-gray-700 dark:text-white mt-1">--}}
+{{--                </div>--}}
+
                 <div>
-                    <label for="name" class="block text-sm font-medium text-gray-700 dark:text-white">Ad</label>
-                    <input type="text" id="name" name="name" placeholder="Ad" value="{{ request('name') }}"
-                           class="border border-gray-300 rounded-lg p-2 w-full dark:border-gray-600 dark:bg-gray-700 dark:text-white mt-1">
+                    <label for="user_id" class="block text-sm font-medium text-gray-700 dark:text-white">Tələbə seçin</label>
+                    <select name="user_id[]" multiple id="user_id"
+                            class="select2 border border-gray-300 rounded-lg p-2 w-full dark:border-gray-600 dark:bg-gray-700 dark:text-white mt-1">
+                        @foreach($users as $user)
+                            <option value="{{ $user->id }}" {{ collect(request('user_id'))->contains($user->id) ? 'selected' : '' }}>
+                                {{ $user->name . ' '. $user->surname }}
+                            </option>
+                        @endforeach
+                    </select>
                 </div>
 
-                <!-- Soyad Input with Label -->
-                <div>
-                    <label for="surname" class="block text-sm font-medium text-gray-700 dark:text-white">Soyad</label>
-                    <input type="text" id="surname" name="surname" placeholder="Soyad" value="{{ request('surname') }}"
-                           class="border border-gray-300 rounded-lg p-2 w-full dark:border-gray-600 dark:bg-gray-700 dark:text-white mt-1">
-                </div>
 
                 <!-- Ölkə Select with Label -->
                 <div>

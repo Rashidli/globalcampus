@@ -36,7 +36,6 @@ class UserController extends Controller
     public function create()
     {
         $roles = Role::all();
-
         return view('users.create', compact('roles'));
     }
 
@@ -47,7 +46,7 @@ class UserController extends Controller
     {
         $user = new User([
             'name'     => $request->input('name'),
-            'surname'     => $request->input('surname'),
+            'surname'  => $request->input('surname'),
             'email'    => $request->input('email'),
             'type'     => UserType::USER,
             'password' => Hash::make($request->input('password')),
@@ -57,6 +56,7 @@ class UserController extends Controller
 
         $user->save();
         session()->flash('success', "{$user->name} əlavə olundu.");
+
         return redirect()->route('users.index')->with('message', 'İstifadəçi əlavə edildi');
     }
 
@@ -82,13 +82,13 @@ class UserController extends Controller
     {
         $request->validate([
             'name'     => 'required|string|max:255',
-            'surname'     => 'required|string|max:255',
+            'surname'  => 'required|string|max:255',
             'email'    => 'required|email|unique:users,email,' . $user->id,
             'password' => 'nullable|string|min:8',
         ]);
 
-        $user->name  = $request->input('name');
-        $user->email = $request->input('email');
+        $user->name    = $request->input('name');
+        $user->email   = $request->input('email');
         $user->surname = $request->input('surname');
 
         if ($request->password) {

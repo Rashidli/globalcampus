@@ -194,8 +194,8 @@
             let educationLevelId = $(this).val();
 
             if (!educationLevelId) {
-                $('#school_type_select').html('<option value="">Seçin</option>').niceSelect('update');
-                $('#profession_id').html('<option value="">Seçin</option>').niceSelect('update');
+                $('#school_type_select').html('<option value="">Seçin</option>').trigger('update');
+                $('#profession_id').html('<option value="">Seçin</option>').trigger('update');
                 return;
             }
 
@@ -213,8 +213,8 @@
                         professionOptions += `<option value="${profession.id}">${profession.title}</option>`;
                     });
 
-                    $('#school_type_select').html(schoolTypeOptions).niceSelect('update');
-                    $('#profession_id').html(professionOptions).niceSelect('update');
+                    $('#school_type_select').html(schoolTypeOptions).trigger('update');
+                    $('#profession_id').html(professionOptions).trigger('update');
                 }
             });
         });
