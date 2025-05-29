@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Http\Services\ActivityLogger;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -100,7 +99,7 @@ class User extends Authenticatable
 
     public function programs(): HasMany
     {
-        return $this->hasMany(Program::class);
+        return $this->hasMany(Program::class)->where('is_accept', true);
     }
 
     public function documents(): HasMany
@@ -121,5 +120,10 @@ class User extends Authenticatable
     public function logs(): HasMany
     {
         return $this->hasMany(StudentLog::class, 'student_id');
+    }
+
+    public function customNotifications(): HasMany
+    {
+        return $this->hasMany(Notification::class);
     }
 }

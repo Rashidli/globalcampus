@@ -26,7 +26,7 @@ class DocumentController extends Controller
 
     public function create(Request $request)
     {
-        $education_level = EducationLevel::query()->with('setting_documents')->findOrFail($request->education_level_id);
+        $education_level = EducationLevel::query()->with('settingDocuments')->findOrFail($request->education_level_id);
         $user            = User::query()->findOrFail($request->user_id);
 
         return view('students.documents.create', compact('education_level', 'user'));
@@ -119,7 +119,9 @@ class DocumentController extends Controller
         $user               = User::query()->findOrFail($document->user_id);
         $education_levels   = EducationLevel::all();
         $education_level_id = EducationLevel::query()->where('title', $document->file_title)->first();
-        $setting_documents  = SettingDocument::query()->where('education_level_id', $education_level_id->id)->get();
+        $setting_documents  = SettingDocument::whereHas('educationLevels', function ($query) use ($education_level_id): void {
+            $query->where('education_levels.id', $education_level_id);
+        })->get();
 
         return view('students.documents.edit', compact('document', 'user', 'education_levels', 'setting_documents'));
     }

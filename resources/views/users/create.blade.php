@@ -11,39 +11,55 @@
         </svg>
         Geri
     </a>
-    <div class="addNewPermission-container">
+
+    <div class="addNewRolls-container">
         <h2>Yeni istifadəçi əlavə et</h2>
-        <form action="{{route('users.store')}}" class="addNewPermissionForm" method="post">
+        <form action="{{ route('users.store') }}" method="post" class="addNewRollsForm">
             @csrf
+
             <div class="form-items">
                 <div class="form-item">
                     <label for="">Ad</label>
-                    <input type="text" placeholder="Ad" name="name" value="{{old('name')}}">
-                    @if($errors->first('name')) <small class="form-text text-danger">{{$errors->first('name')}}</small>@endif
+                    <input type="text" placeholder="Ad" name="name" value="{{ old('name') }}">
+                    @if($errors->first('name'))
+                        <small class="form-text text-danger">{{ $errors->first('name') }}</small>
+                    @endif
                 </div>
+                <div class="form-item">
                     <label for="">Soyad</label>
-                    <input type="text" placeholder="Soyad" name="surname" value="{{old('surname')}}">
-                    @if($errors->first('surname')) <small class="form-text text-danger">{{$errors->first('surname')}}</small>@endif
+                    <input type="text" placeholder="Soyad" name="surname" value="{{ old('surname') }}">
+                    @if($errors->first('surname'))
+                        <small class="form-text text-danger">{{ $errors->first('surname') }}</small>
+                    @endif
                 </div>
                 <div class="form-item">
                     <label for="">Email</label>
-                    <input type="email" placeholder="Email" name="email" value="{{old('email')}}">
-                    @if($errors->first('email')) <small class="form-text text-danger">{{$errors->first('email')}}</small>@endif
+                    <input type="email" placeholder="Email" name="email" value="{{ old('email') }}">
+                    @if($errors->first('email'))
+                        <small class="form-text text-danger">{{ $errors->first('email') }}</small>
+                    @endif
                 </div>
                 <div class="form-item">
                     <label for="">Parol</label>
-                    <input type="password" placeholder="Parol" name="password" value="{{old('password')}}">
-                    @if($errors->first('password')) <small class="form-text text-danger">{{$errors->first('password')}}</small>@endif
+                    <input type="password" placeholder="Parol" name="password">
+                    @if($errors->first('password'))
+                        <small class="form-text text-danger">{{ $errors->first('password') }}</small>
+                    @endif
                 </div>
                 <div class="form-item">
                     <label for="">Rol</label>
-                    <select name="role" class="border border-gray-300 rounded-lg p-2 w-full dark:border-gray-600 dark:bg-gray-700 dark:text-white">
+                    <select name="role"
+                            class="border border-gray-300 rounded-lg p-2 w-full dark:border-gray-600 dark:bg-gray-700 dark:text-white">
+                        <option value="">Seçin</option>
                         @foreach ($roles as $role)
-                            <option value="{{$role->id}}">{{$role->name}}</option>
+                            <option value="{{ $role->name }}" {{ old('role') == $role->id ? 'selected' : '' }}>
+                                {{ $role->name }}
+                            </option>
                         @endforeach
                     </select>
                 </div>
             </div>
+
             <button class="addPermissionBtn" type="submit">Əlavə et</button>
         </form>
     </div>

@@ -13,6 +13,7 @@ use App\Models\Settings\ProgramStatus;
 use App\Models\Settings\UniversityList;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Program extends Model
@@ -87,6 +88,13 @@ class Program extends Model
     public function program_status(): BelongsTo
     {
         return $this->belongsTo(ProgramStatus::class);
+    }
+
+    public function statuses(): BelongsToMany
+    {
+        return $this->belongsToMany(ProgramStatus::class, 'program_program_status')
+            ->withPivot('file_path', 'note')
+            ->withTimestamps();
     }
 
     public function period(): BelongsTo

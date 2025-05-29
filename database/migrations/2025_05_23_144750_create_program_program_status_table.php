@@ -11,10 +11,12 @@ return new class() extends Migration
      */
     public function up(): void
     {
-        Schema::create('document_education_level', function (Blueprint $table): void {
+        Schema::create('program_program_status', function (Blueprint $table): void {
             $table->id();
-            $table->foreignId('education_level_id')->constrained()->onDelete('cascade');
-            $table->foreignId('setting_document_id')->constrained()->onDelete('cascade');
+            $table->foreignId('program_id')->constrained()->onDelete('cascade');
+            $table->foreignId('program_status_id')->constrained()->onDelete('cascade');
+            $table->string('file_path')->nullable();
+            $table->text('note')->nullable();
             $table->timestamps();
         });
     }
@@ -24,6 +26,6 @@ return new class() extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('document_education_level');
+        Schema::dropIfExists('program_program_status');
     }
 };

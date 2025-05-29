@@ -14,7 +14,7 @@
                 <div class="space-y-4 p-4">
                     <div class="grid grid-cols-3 gap-4">
 
-                        @foreach($education_level->setting_documents ?? [] as $document)
+                        @foreach($education_level->settingDocuments ?? [] as $document)
                             <div class="flex flex-col">
                                 <label for="price" class="mb-2">{{$document->title}}</label>
                                 <input type="file" name="file[]" class="w-full border border-gray-300 rounded-lg p-2">

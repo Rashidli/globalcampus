@@ -88,15 +88,15 @@
                         </div>
 
                         <!-- Status seçimi -->
-                        <div class="flex flex-col">
-                            <label for="status" class="mb-2">Status seçin</label>
-                            <select name="program_status_id" class="select2 border border-gray-300 rounded-lg p-2 w-full dark:border-gray-600 dark:bg-gray-700 dark:text-white">
-                                <option value="">Seçin</option>
-                                @foreach($program_statuses as $program_status)
-                                    <option value="{{$program_status->id}}">{{$program_status->title}}</option>
-                                @endforeach
-                            </select>
-                        </div>
+{{--                        <div class="flex flex-col">--}}
+{{--                            <label for="status" class="mb-2">Status seçin</label>--}}
+{{--                            <select name="program_status_id" class="select2 border border-gray-300 rounded-lg p-2 w-full dark:border-gray-600 dark:bg-gray-700 dark:text-white">--}}
+{{--                                <option value="">Seçin</option>--}}
+{{--                                @foreach($program_statuses as $program_status)--}}
+{{--                                    <option value="{{$program_status->id}}">{{$program_status->title}}</option>--}}
+{{--                                @endforeach--}}
+{{--                            </select>--}}
+{{--                        </div>--}}
 
                         <!-- Qeyd -->
                         <div class="flex flex-col">

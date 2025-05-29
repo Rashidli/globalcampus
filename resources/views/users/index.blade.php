@@ -24,7 +24,7 @@
             @foreach($users as $key => $user)
                 <tr>
                     <td class="rollsNumber">{{$key + 1}}</td>
-                    <td class="rollsName">{{$user->name}}</td>
+                    <td class="rollsName">{{$user->name .' ' . $user->surname}}</td>
                     <td class="rollsNumber">{{$user->roles()->first()?->name}}</td>
                     <td class="rollsOthersButtons">
                         <a href="{{route('users.edit', $user->id)}}" class="rollsEdit">

@@ -46,6 +46,11 @@
                     @if($errors->first('email')) <small class="form-text text-danger">{{$errors->first('email')}}</small>@endif
                 </div>
                 <div class="form-item">
+                    <label for="">Instagram url</label>
+                    <input type="url" name="insta_url" value="{{old('insta_url', $agent->agent_info?->insta_url)}}" placeholder="Instagram url">
+                    @if($errors->first('insta_url')) <small class="form-text text-danger">{{$errors->first('insta_url')}}</small>@endif
+                </div>
+                <div class="form-item">
                     <label for="">Şəkil</label>
                     <input type="file"  name="image">
                     @if($errors->first('image')) <small class="form-text text-danger">{{$errors->first('image')}}</small>@endif

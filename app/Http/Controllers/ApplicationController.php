@@ -24,7 +24,9 @@ class ApplicationController extends Controller
     {
         $user = auth()->user();
 
-        return Program::query()->whereHas('user')
+        return Program::query()->where('is_accept', true)->with(['statuses' => function ($q): void {
+            $q->orderByDesc('created_at')->limit(1);
+        }])->whereHas('user')
             ->filterByUser($user)
             ->when($request->filled('user_id'), fn ($q) => $q->FilterByStudent($request->user_id))
             ->when($request->filled('agent_id'), fn ($q) => $q->filterByAgentIds($request->agent_id))
@@ -93,11 +95,25 @@ class ApplicationController extends Controller
         $request->validate([
             'application_id'    => 'required|exists:programs,id',
             'program_status_id' => 'required|exists:program_statuses,id',
+            'file'              => 'nullable|file|mimes:pdf,doc,docx,jpg,png',
+            'note'              => 'nullable|string',
         ]);
 
         $application                    = Program::findOrFail($request->application_id);
         $application->program_status_id = $request->program_status_id;
         $application->save();
+
+        if ($request->hasFile('file')) {
+            $filePath = $request->file('file')->store('program_status_files', 'public');
+        }
+
+        $application->statuses()->attach($request->program_status_id, [
+            'program_id' => $request->application_id,
+            'file_path'  => $filePath,
+            'note'       => $request->note,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
 
         return redirect()->back()->with('success', 'Status uğurla dəyişdirildi.');
     }

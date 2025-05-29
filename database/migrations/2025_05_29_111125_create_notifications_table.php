@@ -11,11 +11,15 @@ return new class() extends Migration
      */
     public function up(): void
     {
-        Schema::create('document_education_level', function (Blueprint $table): void {
+        Schema::create('notifications', function (Blueprint $table): void {
             $table->id();
-            $table->foreignId('education_level_id')->constrained()->onDelete('cascade');
-            $table->foreignId('setting_document_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->constrained();
+            $table->string('title')->nullable();
+            $table->string('link')->nullable();
+            $table->string('description')->nullable();
+            $table->boolean('is_read')->default(false);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -24,6 +28,6 @@ return new class() extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('document_education_level');
+        Schema::dropIfExists('notifications');
     }
 };

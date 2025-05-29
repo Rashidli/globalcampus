@@ -17,12 +17,14 @@
 
                     <!-- Təhsil səviyyəsi -->
                     <div class="form-item flex flex-col">
-                        <label for="educationLevel" class="mb-1 font-medium text-sm text-gray-700">Təhsil səviyyəsi</label>
+                        <label for="educationLevel" class="mb-1 font-medium text-sm text-gray-700">Təhsil
+                            səviyyəsi</label>
                         <select name="file_title" id="educationLevel"
                                 class="select2 border border-gray-300 rounded-lg p-2 w-full dark:border-gray-600 dark:bg-gray-700 dark:text-white">
                             <option value="">Seçin</option>
                             @foreach($education_levels as $education_level)
-                                <option value="{{ $education_level->title }}" {{ $document->file_title == $education_level->title ? 'selected' : '' }}>
+                                <option
+                                    value="{{ $education_level->title }}" {{ $document->file_title == $education_level->title ? 'selected' : '' }}>
                                     {{ $education_level->title }}
                                 </option>
                             @endforeach
@@ -36,7 +38,8 @@
                                 class="select2 border border-gray-300 rounded-lg p-2 w-full dark:border-gray-600 dark:bg-gray-700 dark:text-white">
                             <option value="">Seç</option>
                             @foreach($setting_documents as $setting_document)
-                                <option value="{{ $setting_document->title }}" {{ $document->title == $setting_document->title ? 'selected' : '' }}>
+                                <option
+                                    value="{{ $setting_document->title }}" {{ $document->title == $setting_document->title ? 'selected' : '' }}>
                                     {{ $setting_document->title }}
                                 </option>
                             @endforeach
@@ -54,10 +57,12 @@
 
                 <!-- Buttonlar -->
                 <div class="flex justify-end gap-2 mt-6">
-                    <button class="px-4 py-2 bg-green-500 text-white rounded-lg shadow-md hover:bg-green-600 transition">
+                    <button
+                        class="px-4 py-2 bg-green-500 text-white rounded-lg shadow-md hover:bg-green-600 transition">
                         Yadda saxla
                     </button>
-                    <a href="{{ route('documents.index', $user->id) }}" class="px-4 py-2 bg-gray-500 text-white rounded-lg shadow-md hover:bg-gray-600 transition">
+                    <a href="{{ route('documents.index', $user->id) }}"
+                       class="px-4 py-2 bg-gray-500 text-white rounded-lg shadow-md hover:bg-gray-600 transition">
                         Geri
                     </a>
                 </div>
@@ -67,7 +72,8 @@
                             <div class="flex items-center justify-between">
       <span class="text-sm font-medium text-blue-600">
         Mövcud fayl:
-        <a href="{{ asset('files/' . $document->file) }}" target="_blank" class="ml-2 underline hover:text-blue-800 transition-colors">
+        <a href="{{ asset('files/' . $document->file) }}" target="_blank"
+           class="ml-2 underline hover:text-blue-800 transition-colors">
           Faylı aç
         </a>
       </span>

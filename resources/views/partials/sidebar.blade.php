@@ -365,7 +365,7 @@
 {{--            @if(!auth()->user()->hasRole('Student') && !auth()->user()->hasRole('Agent'))--}}
 {{--                --}}
 {{--            @endif--}}
-            <a href="notification.html" class="flex items-center gap-3 mb-3 rounded-lg ">
+            <a href="{{route('notifications.index')}}" class="flex items-center gap-3 mb-3 rounded-lg ">
                 <div class="relative">
                     <svg width="22" height="24" viewBox="0 0 22 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-gray-700">
                         <path d="M17.4167 10.8955V10.25C17.4167 6.70621 14.5438 3.83337 11 3.83337C7.45619 3.83337 4.58335 6.70621 4.58335 10.25V10.8955C4.58335 11.67 4.35408 12.4273 3.92442 13.0718L2.87153 14.6511C1.90983 16.0937 2.64401 18.0545 4.31666 18.5106C8.69233 19.704 13.3077 19.704 17.6834 18.5106C19.356 18.0545 20.0902 16.0937 19.1285 14.6511L18.0756 13.0718C17.646 12.4273 17.4167 11.67 17.4167 10.8955Z" stroke="currentColor" stroke-width="1.5"></path>
@@ -374,7 +374,7 @@
                 </div>
                 <div class="flex items-center gap-2">
                     <span class="text-gray-700">Bildirişlər</span>
-                    <span class="bg-red-500 text-white text-xs font-medium px-2 py-0.5 rounded-full">55</span>
+                    <span class="bg-red-500 text-white text-xs font-medium px-2 py-0.5 rounded-full">{{auth()->user()->customNotifications->where('is_read', false)->count()}}</span>
                 </div>
             </a>
             <a href="{{route('logout')}}" class="exitProfile flex flex-col items-center justify-center" type="button">

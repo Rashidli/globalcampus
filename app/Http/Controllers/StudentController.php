@@ -133,7 +133,7 @@ class StudentController extends Controller
 
         $services = Service::all();
 
-        $education_levels = EducationLevel::query()->with('setting_documents')->get();
+        $education_levels = EducationLevel::query()->with('settingDocuments')->get();
 
         return view('students.show', compact('user', 'services', 'education_levels'));
     }
@@ -423,14 +423,14 @@ class StudentController extends Controller
 
     public function getDocuments($educationLevel)
     {
-        $education = EducationLevel::where('title', $educationLevel)->with('setting_documents')->first();
+        $education = EducationLevel::where('title', $educationLevel)->with('settingDocuments')->first();
 
         if ( ! $education) {
             return response()->json(['documents' => []]);
         }
 
         return response()->json([
-            'documents' => $education->setting_documents->pluck('title'),
+            'documents' => $education->settingDocuments->pluck('title'),
         ]);
     }
 }

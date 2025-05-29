@@ -329,6 +329,31 @@
                 $('#editUniversityModal').addClass('hidden');
             }
         });
+
+        document.querySelectorAll('.document-input-item').forEach(function (item) {
+            item.addEventListener('click', function () {
+                const fileInput = item.querySelector('input[type="file"]');
+                if (fileInput) {
+                    fileInput.click();
+                }
+            });
+
+            const input = item.querySelector('input[type="file"]');
+            input.addEventListener('change', function () {
+                const fileName = input.files.length > 0 ? input.files[0].name : '';
+                item.querySelector('.fileName').textContent = fileName;
+            });
+        });
+
+        document.querySelectorAll('.resetDocumentBox').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                const box = btn.closest('.border');
+                const input = box.querySelector('input[type="file"]');
+                const fileName = box.querySelector('.fileName');
+                input.value = '';
+                fileName.textContent = '';
+            });
+        });
     });
 </script>
 

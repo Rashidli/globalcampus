@@ -4,6 +4,7 @@ use App\Http\Controllers\AcademicController;
 use App\Http\Controllers\AgentController;
 use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\ServiceController;
@@ -62,6 +63,8 @@ Route::group(['middleware' => 'auth'], function (): void {
     Route::resource('students', StudentController::class);
     Route::resource('academics', AcademicController::class);
     Route::resource('contracts', ContractController::class);
+    Route::resource('notifications', NotificationController::class);
+    Route::post('/notifications/mark-read', [NotificationController::class, 'markRead'])->name('notifications.markRead');
 
     Route::resource('setting_documents', SettingDocumentController::class);
 
@@ -102,11 +105,19 @@ Route::group(['middleware' => 'auth'], function (): void {
     Route::post('/applications/change-status', [ApplicationController::class, 'changeStatus'])->name('applications.change-status');
 
     Route::get('programs/index/{student_id}', [ProgramController::class, 'index'])->name('programs.index');
+    Route::post('programs.accept/{id}', [ProgramController::class, 'accept'])->name('programs.accept');
     Route::get('programs/create/{student_id}', [ProgramController::class, 'create'])->name('programs.create');
     Route::get('programs/edit/{id}', [ProgramController::class, 'edit'])->name('programs.edit');
+    Route::get('programs/show/{id}', [ProgramController::class, 'show'])->name('programs.show');
     Route::post('programs/store/{student_id}', [ProgramController::class, 'store'])->name('programs.store');
     Route::put('programs/update/{id}', [ProgramController::class, 'update'])->name('programs.update');
     Route::delete('programs/destroy/{id}', [ProgramController::class, 'destroy'])->name('programs.destroy');
+    Route::post('/program-status', [ProgramController::class, 'storeStatus'])->name('program-status.store');
+    Route::put('/programs/{program}/status/{status}', [ProgramController::class, 'updateStatus'])
+        ->name('program-status.update');
+
+    Route::delete('/programs/{program}/status/{status}', [ProgramController::class, 'destroyStatus'])
+        ->name('program-status.destroy');
 
     Route::get('get-tariffs/{university_list_id}/{education_level_id}', [ProgramController::class, 'getTariffs']);
     //    Route::get('get-professions/{education_level_id}', [ProgramController::class,'getProfessions']);
